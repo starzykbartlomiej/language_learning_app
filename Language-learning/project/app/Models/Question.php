@@ -14,8 +14,8 @@ class Question extends Model
         return $this->belongsTo(Quiz::class);
     }
 
-    public function picture()
+    public function option()
     {
-        return $this->hasMany(Picture::class);
+        return $this->hasMany(Option::class);
     }
 }

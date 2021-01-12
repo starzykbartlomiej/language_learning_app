@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Picture;
+use App\Models\Option;
 use App\Models\Question;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PictureFactory extends Factory
+class OptionFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Picture::class;
+    protected $model = Option::class;
 
     /**
      * Define the model's default state.
@@ -24,7 +24,7 @@ class PictureFactory extends Factory
     {
         return [
             'question_id' => Question::factory(),
-            'picture_path' => $this->faker->imageUrl(640, 480, 'cats')
+            'data' => $this->faker->imageUrl(640, 480, 'cats')
         ];
     }
 }

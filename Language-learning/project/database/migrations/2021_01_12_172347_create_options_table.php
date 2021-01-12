@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePicturesTable extends Migration
+class CreateOptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreatePicturesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pictures', function (Blueprint $table) {
+        Schema::create('options', function (Blueprint $table) {
             $table->id();
-            $table->string('picture_path');
+            $table->string('data');
             $table->foreignId('question_id');
             $table->timestamps();
 
@@ -33,10 +33,10 @@ class CreatePicturesTable extends Migration
      */
     public function down()
     {
-        Schema::table('pictures', function (Blueprint $table) {
+        Schema::table('options', function (Blueprint $table) {
             $table->dropForeign('question_id');
         });
 
-        Schema::dropIfExists('pictures');
+        Schema::dropIfExists('options');
     }
 }
