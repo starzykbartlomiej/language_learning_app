@@ -23,4 +23,9 @@ class Quiz extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function language()
+    {
+        $this->belongsTo(Language::class);
+    }
 }

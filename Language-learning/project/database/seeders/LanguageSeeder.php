@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Language;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class UserSeeder extends Seeder
+class LanguageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,11 +15,11 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'John Doe',
-            'email' => 'john.doe@gmail.com',
-            'password' => bcrypt('secret'),
+        DB::table('languages')->insert([
+            'language' => 'german'
         ]);
-
+        DB::table('languages')->insert([
+            'language' => 'english'
+        ]);
     }
 }
