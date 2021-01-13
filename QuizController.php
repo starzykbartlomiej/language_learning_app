@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Language;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Quiz;
 use App\Models\User;
@@ -18,7 +17,6 @@ class QuizController extends Controller
     public function index()
     {
         $user=Auth::user();
-        $languges=Language::all();
         $quizzes = Quiz::all();
         return view('quizzes.index')->withQuizzes($quizzes);
     }
@@ -30,8 +28,8 @@ class QuizController extends Controller
      */
     public function create()
     {
-        $language=Language::all();
-        return view('quizzes.create')->withLanguage($language);
+        $user=Auth::user();
+        return view('quizzes.create')->withUser($user);
     }
 
     /**
@@ -46,8 +44,7 @@ class QuizController extends Controller
             'language' => 'required',
         ]);
         $quiz=new Quiz();
-        $quiz->language=$request->Input('language')->language;
-        $quiz->language_id=$request->Input('language')->id;
+        $quiz->language=$request->language;
         $quiz->user_id=Auth::user()->id;
         $quiz->save();
         return response(redirect()->route('quizzes.index'));

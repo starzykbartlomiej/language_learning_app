@@ -11,6 +11,6 @@ class Language extends Model
 
     public function quiz()
     {
-        return $this->hasMany(Quiz::class);
+        return $this->hasMany(Quiz::class,'language_id','id');
     }
 }
