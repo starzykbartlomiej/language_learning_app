@@ -51,6 +51,11 @@
                             {{ __('Create new...') }}
                         </x-button>
                     </form>
+                    <form method="get" action="{{ route('languages.create') }}">
+                        <x-button class="ml-4">
+                            {{ __('Add new language') }}
+                        </x-button>
+                    </form>
                 </div>
             </div>
         </div>

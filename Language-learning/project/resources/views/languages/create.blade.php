@@ -8,17 +8,15 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <form action="{{route('quizzes.store')}}">
+                    <form method="POST" action="{{route('languages.store')}}">
                         @csrf
-                        <label for="language">Language:</label>
-{{--                            <input type="text" name="language">}}--}}
-                        <select class="form-control" name="language-list">
-                            @foreach(\App\Models\Language::all() as $language)
-                                <option>{{$language->language}}</option>
-                            @endforeach
-                        </select>
+                        {{--                            <input type="text" name="language">}}--}}
+                        <div>
+                            <x-label for="language" :value="__('Language')" />
+                            <x-input id="language" class="block mt-1 w-full" type="text" name="language" :value="old('language')" autofocus />
+                        </div>
                         <x-button class="ml-3">
-                            {{ __('Create') }}
+                            {{ __('Add new language') }}
                         </x-button>
                     </form>
                 </div>
@@ -26,3 +24,4 @@
         </div>
     </div>
 </x-app-layout>
+

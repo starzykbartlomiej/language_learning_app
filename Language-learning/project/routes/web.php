@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::resource('/comments', App\Http\Controllers\CommentController::class);
 
 Route::resource('/quizzes', App\Http\Controllers\QuizController::class)->middleware('auth');
-
+Route::resource('/languages',App\Http\Controllers\LanguageController::class)->middleware('auth');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
