@@ -34,7 +34,8 @@ class LanguageController extends Controller
             'language' => 'required',
         ]);
         $language=new Language();
-        $language->language=$request->language;
+        response(redirect()->route('languages.store'));
+        $language->language = $request->language;
         $language->save();
         return response(redirect()->route('quizzes.index'));
     }

@@ -13,7 +13,7 @@
                         {{--                            <input type="text" name="language">}}--}}
                         <div>
                             <x-label for="language" :value="__('Language')" />
-                            <x-input id="language" class="block mt-1 w-full" type="text" name="language" :value="old('language')" autofocus />
+                            <x-input id="language" class="block mt-1 w-full" type="text" name="language" :value="old('language')" />
                         </div>
                         <x-button class="ml-3">
                             {{ __('Add new language') }}
