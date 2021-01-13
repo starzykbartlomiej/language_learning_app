@@ -45,11 +45,12 @@ class QuizController extends Controller
         $this->validate($request, [
             'language' => 'required',
         ]);
-        $quiz=new Quiz();
-        $language=$request->input('language-list');
-        $quiz->language=$language->language;
-        $quiz->language_id=$language->id;
-        $quiz->user_id=Auth::user()->id;
+        $language_id = json_decode(\App\Models\Language::select('id')
+                                                    ->where('language',$request->language)
+                                                    ->first(),true)['id'];
+        $quiz = new Quiz();
+        $quiz->user_id = Auth::user()->id;
+        $quiz->language_id = $language_id;
         $quiz->save();
         return response(redirect()->route('quizzes.index'));
     }
