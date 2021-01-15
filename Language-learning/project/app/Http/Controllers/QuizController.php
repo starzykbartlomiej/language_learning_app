@@ -52,7 +52,7 @@ class QuizController extends Controller
         $quiz->user_id = Auth::user()->id;
         $quiz->language_id = $language_id;
         $quiz->save();
-        return response(redirect()->route('quizzes.index'));
+        return redirect(route('quizzes.index'));
     }
 
 

@@ -25,4 +25,5 @@ $I->click("Add new language");
 $I->seeInDatabase('languages', [
     'language' => 'spanish',
 ]);
+$I->seeCurrentUrlEquals('/quizzes');
 

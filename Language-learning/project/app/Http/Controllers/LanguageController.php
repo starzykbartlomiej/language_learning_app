@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Language;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class LanguageController extends Controller
 {
@@ -30,14 +31,22 @@ class LanguageController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'language' => 'required',
+        $ValidateData=$this->validate($request, [
+                'language' => 'required|unique:languages,language'
+            ]);
+        $validator=Validator::make($request->all(),[
+            'language' => 'required|unique:languages,language'
         ]);
-        $language=new Language();
-        response(redirect()->route('languages.store'));
-        $language->language = $request->language;
-        $language->save();
-        return response(redirect()->route('quizzes.index'));
+        if($validator->fails()){
+            $errors="This language was added before";
+            return redirect('quizzes.create')->withErrors($errors);
+        }else {
+            $language = new Language();
+            response(redirect()->route('languages.store'));
+            $language->language = $request->language;
+            $language->save();
+            return redirect(route('quizzes.index'));
+        }
     }
 
     /**
