@@ -36,6 +36,13 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm text-gray-900">{{json_decode(\App\Models\User::select('email')->where('id',$quiz->user_id)->first(),true)['email']}}</div>
                                 </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <form method="get" action="{{ route('quizzes.comments.index',$quiz) }}">
+                                        <x-button class="ml-4">
+                                            {{ __('Discusion') }}
+                                        </x-button>
+                                    </form>
+                                </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     {{--                                    <a href="{{ route('books.show', $book) }}" class="text-indigo-600 hover:text-indigo-900">Details</a>--}}
                                 </td>

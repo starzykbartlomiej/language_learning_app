@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Quiz;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -17,4 +18,5 @@ class CommentController extends Controller
     {
         return view('comments.show')->withComment($comment);
     }
+
 }
