@@ -28,7 +28,6 @@
                         <br>
                         <td>
                             <form method="get" action="{{ route('quizzes.comments.edit',  ['quiz'=>$quiz, 'comment'=>$comment]) }}">
-                                @csrf
                                 <x-button class="ml-4">
                                     {{ __('Edit') }}
                                 </x-button>
@@ -43,7 +42,7 @@
         </tbody>
         <form method="get" action="{{ route('quizzes.comments.create',$quiz) }}">
             <x-button class="ml-4">
-                {{ __('Add new comments') }}
+                {{ __('Add new comment') }}
             </x-button>
         </form>
     </div>
