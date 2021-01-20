@@ -16,7 +16,8 @@ class QuestionController extends Controller
     public function index(Quiz $quiz)
     {
         //TODO add user name in questions index
-        return view('questions.index')->withQuiz($quiz);
+        $questions = Question::all()->where('quiz_id', $quiz->id);
+        return view('questions.index')->withQuiz($quiz)->withQuestions($questions);
     }
 
     /**
@@ -49,7 +50,15 @@ class QuestionController extends Controller
      */
     public function store(Request $request, Quiz $quiz)
     {
-        dd($request->in_english, $request->answer);
+        //TODO validation
+        $question = new Question();
+        $question->in_english = $request->in_english;
+        $question->answer = $request->answer;
+        $question->quiz_id = $quiz->id;
+        $question->is_correct = true;
+        $question->type = $request->type;
+        $question->save();
+        return redirect()->route('quizzes.questions.index', $quiz);
     }
 
     /**

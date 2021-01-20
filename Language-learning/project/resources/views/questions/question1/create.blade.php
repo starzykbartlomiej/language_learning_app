@@ -21,6 +21,9 @@
                                 <x-label for="answer" :value="__('Answer in <language>')" />
                                 <x-input id="answer" class="block mt-1 w-full" type="text" name="answer" :value="old('answer')" />
                             </div>
+
+                            <x-input id="type" class="block mt-1 w-full" type="hidden" name="type" :value="1" />
+
                             <div class="flex items-center justify-end mt-4">
                                 <x-button class="ml-4">
                                     {{ __('Add new question') }}
