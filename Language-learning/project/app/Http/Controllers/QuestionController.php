@@ -24,9 +24,32 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, Quiz $quiz)
     {
+//        dd($request->question_type);
 
+        switch($request->question_type)
+        {
+            case '1':
+                dd(1);
+                break;
+            case '2':
+//                TODO add another question
+                dd(2);
+                break;
+            case '3':
+                //                TODO add another question
+                dd(3);
+                break;
+            case '4':
+                //                TODO add another question
+                dd(4);
+                break;
+            case '5':
+                //                TODO add another question
+                dd(5);
+                break;
+        }
     }
 
     /**
