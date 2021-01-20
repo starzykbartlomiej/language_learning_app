@@ -22,7 +22,7 @@
                         </x-button>
                     </form>
 
-                    <form method="get" action="{{ route('quizzes.create') }}">
+                    <form method="get" action="{{ route('languages.create') }}">
                         <x-button class="ml-4">
                             {{ __('Add new language') }}
                         </x-button>
