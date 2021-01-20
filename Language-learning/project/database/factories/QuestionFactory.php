@@ -24,7 +24,7 @@ class QuestionFactory extends Factory
     {
         return [
             'answer'=>$this->faker->word,
-            'in_polish' => $this->faker->word,
+            'in_english' => $this->faker->word,
             'quiz_id' => Quiz::factory(),
             'is_correct' => $this->faker->boolean,
             //TODO change to set of 5 values

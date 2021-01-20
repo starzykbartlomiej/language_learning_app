@@ -16,7 +16,7 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->string('answer');
-            $table->string('in_polish');
+            $table->string('in_english');
             $table->foreignId('quiz_id');
             $table->boolean('is_correct');
             $table->string('type');
