@@ -30,8 +30,8 @@ class QuizController extends Controller
      */
     public function create()
     {
-        $language=Language::all();
-        return view('quizzes.create')->withLanguage($language);
+        $languages=Language::all();
+        return view('quizzes.create')->withLanguages($languages);
     }
 
     /**
