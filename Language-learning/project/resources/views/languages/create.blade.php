@@ -18,9 +18,11 @@
                             <x-label for="language" :value="__('Language')" />
                             <x-input id="language" class="block mt-1 w-full" type="text" name="language" :value="old('language')" />
                         </div>
-                        <x-button class="ml-3">
-                            {{ __('Add new language') }}
-                        </x-button>
+                        <div class="flex items-center justify-end mt-4 px-4 pb-5">
+                            <x-button class="ml-3">
+                                {{ __('Add new language') }}
+                            </x-button>
+                        </div>
                     </form>
                 </div>
             </div>

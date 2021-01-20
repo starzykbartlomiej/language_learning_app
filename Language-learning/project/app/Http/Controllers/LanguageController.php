@@ -45,7 +45,7 @@ class LanguageController extends Controller
             response(redirect()->route('languages.store'));
             $language->language = $request->language;
             $language->save();
-            return redirect(route('quizzes.index'));
+            return redirect(route('quizzes.create'));
         }
     }
 

@@ -39,7 +39,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <form method="get" action="{{ route('quizzes.comments.index',$quiz) }}">
                                         <x-button class="ml-4" id="discusion.{{$quiz->id}}">
-                                            {{ __('Discusion') }}
+                                            {{ __('Discussion') }}
                                         </x-button>
                                     </form>
                                 </td>
@@ -56,11 +56,6 @@
                     <form method="get" action="{{ route('quizzes.create') }}">
                         <x-button class="ml-4">
                             {{ __('Create new...') }}
-                        </x-button>
-                    </form>
-                    <form method="get" action="{{ route('languages.create') }}">
-                        <x-button class="ml-4">
-                            {{ __('Add new language') }}
                         </x-button>
                     </form>
                 </div>
