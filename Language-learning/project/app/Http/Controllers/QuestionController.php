@@ -26,29 +26,18 @@ class QuestionController extends Controller
      */
     public function create(Request $request, Quiz $quiz)
     {
-//        dd($request->question_type);
-
         switch($request->question_type)
         {
             case '1':
-                dd(1);
-                break;
+                return view('questions.question1.create')->withQuiz($quiz);
             case '2':
-//                TODO add another question
-                dd(2);
-                break;
+                return view('questions.question2.create')->withQuiz($quiz);
             case '3':
-                //                TODO add another question
-                dd(3);
-                break;
+                return view('questions.question3.create')->withQuiz($quiz);
             case '4':
-                //                TODO add another question
-                dd(4);
-                break;
+                return view('questions.question4.create')->withQuiz($quiz);
             case '5':
-                //                TODO add another question
-                dd(5);
-                break;
+                return view('questions.question5.create')->withQuiz($quiz);
         }
     }
 
@@ -58,9 +47,9 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Quiz $quiz)
     {
-        //
+        dd($request->in_english, $request->answer);
     }
 
     /**
