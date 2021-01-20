@@ -31,7 +31,9 @@
                         @foreach($quizzes as $quiz)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-500">{{ json_decode(\App\Models\Language::select('language')->where('id',$quiz->language_id)->first(),true)['language']}}</div>
+                                    <div class="text-sm text-gray-500">{{ ucfirst(json_decode(\App\Models\Language::select('language')
+                                                                                                                ->where('id',$quiz->language_id)
+                                                                                                                ->first(),true)['language']) }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm text-gray-900">{{json_decode(\App\Models\User::select('email')->where('id',$quiz->user_id)->first(),true)['email']}}</div>

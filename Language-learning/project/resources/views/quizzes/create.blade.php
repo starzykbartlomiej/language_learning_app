@@ -36,6 +36,17 @@
 
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center justify-end mt-4 px-4 pb-5">
+                                    <form method="post" action="TODO">
+                                        @csrf
+                                        <label for="question_type">Question type: </label>
+                                        <select class="form-control" name="question_type" id="question_type">
+                                            <option>{{ __('1') }}</option>
+                                            <option>{{ __('2') }}</option>
+                                            <option>{{ __('3') }}</option>
+                                            <option>{{ __('4') }}</option>
+                                            <option>{{ __('5') }}</option>
+                                        </select>
+                                    </form>
                                     <form method="get" action="{{}}">
                                         <x-button class="ml-4">
                                             {{ __('Add new question') }}
@@ -58,7 +69,7 @@
                         {{--                            <input type="text" name="language">--}}
                         <select class="form-control" name="language" id="cars">
                             @foreach(\App\Models\Language::all() as $language)
-                                <option>{{$language->language}}</option>
+                                <option>{{ ucfirst($language->language) }}</option>
                             @endforeach
                         </select>
                         <x-button class="ml-4">
