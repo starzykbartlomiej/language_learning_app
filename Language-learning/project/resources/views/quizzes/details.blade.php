@@ -36,6 +36,15 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm text-gray-900">{{ $questions->answer }}</div>
                                 </td>
+                            @if($quiz->is_owner($quiz->user_id))
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                <form method="get" action="{{ route('quizzes.edit',['quiz'=>$quiz->id]) }}">
+                                    <x-button class="ml-4" id="discusion.{{$quiz->id}}">
+                                        {{ __('Edit') }}
+                                    </x-button>
+                                </form>
+                                    </td>
+                            @endif
                             </tr>
                         @endforeach
                         </tbody>

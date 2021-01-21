@@ -33,4 +33,14 @@ class Quiz extends Model
         $lang = Language::query()->where('id', $id)->first('language');
         return $lang->language;
     }
+    public function is_owner($owner)
+    {
+        $logged = auth()->user()->getAuthIdentifier();
+        //$owner = User::query()->where('id', $owner)->first('id');
+        if($logged == $owner)
+            return true;
+        else
+            return false;
+    }
+
 }

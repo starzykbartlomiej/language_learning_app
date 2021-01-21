@@ -44,14 +44,15 @@
                                             {{ __('Discussion') }}
                                         </x-button>
                                     </form>
-                                </td>
-                                <td class="px-1 py-4 whitespace-nowrap">
-                                    <form method="get" action="{{ route('quizzes.show', ['quiz' => $quiz->id]) }}">
-                                        <x-button class="ml-4" id="{{$quiz->id}}">
-                                            {{ __('Details') }}
-                                        </x-button>
-                                    </form>
-                                </td>
+                                @if($quiz->is_owner($quiz->user_id))
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <form method="get" action="{{ route('quizzes.show',['quiz'=>$quiz->id]) }}">
+                                            <x-button class="ml-4" id="discusion.{{$quiz->id}}">
+                                                {{ __('Details') }}
+                                            </x-button>
+                                        </form>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                         </tbody>

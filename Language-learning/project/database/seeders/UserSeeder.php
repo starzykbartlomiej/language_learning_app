@@ -20,6 +20,11 @@ class UserSeeder extends Seeder
             'email' => 'john.doe@gmail.com',
             'password' => bcrypt('secret'),
         ]);
+        DB::table('users')->insert([
+            'name' => 'Alfons',
+            'email' => 'alfons@gmail.com',
+            'password' => bcrypt('pimp'),
+        ]);
 
         User::factory()->count(4)->create();
 
