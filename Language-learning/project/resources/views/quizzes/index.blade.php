@@ -52,6 +52,14 @@
                                             </x-button>
                                         </form>
                                     </td>
+                                @else
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <form method="get" action="{{ route('quizzes.show',['quiz'=>$quiz->id]) }}">
+                                            <x-button class="ml-4" id="discusion.{{$quiz->id}}">
+                                                {{ __('Solve') }}
+                                            </x-button>
+                                        </form>
+                                    </td>
                                 @endif
                             </tr>
                         @endforeach

@@ -19,9 +19,9 @@ class Question extends Model
         return $this->hasMany(Option::class);
     }
 
-    public function names($quiz)
+    public function names($quiz_type)
     {
-        switch($quiz)
+        switch($quiz_type)
         {
             case 1:
                 return 'Word translation';

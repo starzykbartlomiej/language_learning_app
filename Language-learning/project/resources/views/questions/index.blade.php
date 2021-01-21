@@ -61,6 +61,13 @@
                             {{ __('Add new question') }}
                         </x-button>
                     </form>
+
+                    <a href="{{ url('/quizzes') }}">
+                        <x-button class="ml-4">
+                            {{ __('Finish quiz creation') }}
+                        </x-button>
+                    </a>
+
                 </div>
             </div>
         </div>

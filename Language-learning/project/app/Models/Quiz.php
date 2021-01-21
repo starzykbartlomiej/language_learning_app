@@ -26,7 +26,7 @@ class Quiz extends Model
 
     public function language()
     {
-        $this->belongsTo(Language::class);
+        return $this->belongsTo(Language::class);
     }
     public function get_language($id)
     {
@@ -42,5 +42,6 @@ class Quiz extends Model
         else
             return false;
     }
+
 
 }
