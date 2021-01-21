@@ -18,4 +18,20 @@ class Question extends Model
     {
         return $this->hasMany(Option::class);
     }
+    public function names($quiz)
+    {
+        switch($quiz)
+        {
+            case '1':
+                return 'Word translation';
+            case '2':
+                return 'Sentence translation';
+            case '3':
+                return 'Multiple choice';
+            case '4':
+                return 'Multiple image choice';
+            case '5':
+                return 'Build sentece from blocks';
+        }
+    }
 }
