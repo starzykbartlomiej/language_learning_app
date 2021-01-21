@@ -26,7 +26,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 Route::resource('quizzes.comments', App\Http\Controllers\QuizCommentController::class)->middleware('auth');
 Route::resource('quizzes.questions', App\Http\Controllers\QuestionController::class)->middleware('auth');
-
+//Route::get('/quizzes/{quiz}/details', [App\Http\Controllers\QuizController::class, 'details'])->middleware('auth')->name('quizzes.details');
 
 
 require __DIR__.'/auth.php';

@@ -28,4 +28,9 @@ class Quiz extends Model
     {
         $this->belongsTo(Language::class);
     }
+    public function get_language($id)
+    {
+        $lang = Language::query()->where('id', $id)->first('language');
+        return $lang->language;
+    }
 }

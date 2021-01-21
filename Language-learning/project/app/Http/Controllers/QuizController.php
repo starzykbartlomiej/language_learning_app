@@ -64,7 +64,7 @@ class QuizController extends Controller
      */
     public function show(Quiz $quiz)
     {
-        //
+        return view("quizzes.details")->withquiz($quiz);
     }
 
     /**
@@ -100,4 +100,8 @@ class QuizController extends Controller
     {
         //
     }
+    /*public function details(Quiz $quiz)
+    {
+        return "Hello from details";
+    }*/
 }

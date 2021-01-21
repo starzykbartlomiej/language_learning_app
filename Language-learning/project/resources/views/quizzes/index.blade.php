@@ -35,13 +35,20 @@
                                                                                                                 ->where('id',$quiz->language_id)
                                                                                                                 ->first(),true)['language']) }}</div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
+                                <td class="px-0 py-4 whitespace-nowrap">
                                     <div class="text-sm text-gray-900">{{json_decode(\App\Models\User::select('email')->where('id',$quiz->user_id)->first(),true)['email']}}</div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
+                                <td class="px-0 py-4 whitespace-nowrap">
                                     <form method="get" action="{{ route('quizzes.comments.index',$quiz) }}">
                                         <x-button class="ml-4" id="discusion.{{$quiz->id}}">
                                             {{ __('Discussion') }}
+                                        </x-button>
+                                    </form>
+                                </td>
+                                <td class="px-1 py-4 whitespace-nowrap">
+                                    <form method="get" action="{{ route('quizzes.show', ['quiz' => $quiz->id]) }}">
+                                        <x-button class="ml-4" id="{{$quiz->id}}">
+                                            {{ __('Details') }}
                                         </x-button>
                                     </form>
                                 </td>
