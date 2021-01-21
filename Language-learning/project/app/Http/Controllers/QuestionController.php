@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Question;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
 {
@@ -78,9 +79,22 @@ class QuestionController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function edit(Question $question)
+    public function edit($quiz, $question)
     {
-        //
+        $question = Question::query()->where('id', $question)->first();
+        $quizes = Quiz::query()->where('id', $quiz)->first();
+        switch($question->type) {
+            case "1":
+            {
+                return view('questions.question1.edit')->withQuiz($quizes)->withQuestion($question);
+            }
+            default:
+            {
+                return "No editing enabled yet";
+            }
+        }
+
+       // return view('questions.question1.edit')->withQuiz($question);
     }
 
     /**
@@ -90,9 +104,11 @@ class QuestionController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $question)
+    public function update(Request $request, $quiz, $question)
     {
-        //
+        Question::query()->where('id', $question)->update(['answer' => $request->answer, 'in_english'=>$request->in_english]);
+        $quiz = Quiz::query()->where('id', $quiz)->first();
+        return view('quizzes.details')->withQuiz($quiz);
     }
 
     /**
