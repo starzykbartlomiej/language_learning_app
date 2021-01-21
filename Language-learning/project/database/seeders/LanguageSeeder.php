@@ -19,7 +19,7 @@ class LanguageSeeder extends Seeder
             'language' => 'german'
         ]);
         DB::table('languages')->insert([
-            'language' => 'english'
+            'language' => 'spanish'
         ]);
     }
 }

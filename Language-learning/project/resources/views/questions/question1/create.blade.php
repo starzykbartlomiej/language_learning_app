@@ -12,7 +12,7 @@
                         <form method="post" action="{{ route('quizzes.questions.store', $quiz )}}">
                             @csrf
                             <div>
-                                <x-label for="in_english" :value="__('Word in english')" />
+                                <x-label for="in_english" :value="__('Word in <language>')" />
                                 <x-input id="in_english" class="block mt-1 w-full" type="text" name="in_english"
                                          :value="old('in_english')" autofocus />
                             </div>
@@ -22,7 +22,7 @@
                                 <x-input id="answer" class="block mt-1 w-full" type="text" name="answer" :value="old('answer')" />
                             </div>
 
-                            <x-input id="type" class="block mt-1 w-full" type="hidden" name="type" :value="1" />
+                            <x-input id="type" class="block mt-1 w-full" type="hidden" name="type" :value=1 />
 
                             <div class="flex items-center justify-end mt-4">
                                 <x-button class="ml-4">

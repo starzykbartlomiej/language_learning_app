@@ -19,7 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->string('in_english');
             $table->foreignId('quiz_id');
             $table->boolean('is_correct');
-            $table->string('type');
+            $table->integer('type');
             $table->timestamps();
 
             $table->foreign('quiz_id')
