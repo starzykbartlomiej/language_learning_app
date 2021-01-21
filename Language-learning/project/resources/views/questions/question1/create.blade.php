@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Question <type> creator') }}
+            {{ __('Word translation question creator') }}
         </h2>
     </x-slot>
         <div class="py-12">
@@ -12,13 +12,13 @@
                         <form method="post" action="{{ route('quizzes.questions.store', $quiz )}}">
                             @csrf
                             <div>
-                                <x-label for="in_english" :value="__('Word in <language>')" />
+                                <x-label for="in_english" :value="'Word in ' . ucfirst($quiz->get_language($quiz->language_id))" />
                                 <x-input id="in_english" class="block mt-1 w-full" type="text" name="in_english"
                                          :value="old('in_english')" autofocus />
                             </div>
 
                             <div class="mt-4">
-                                <x-label for="answer" :value="__('Answer in <language>')" />
+                                <x-label for="answer" :value="'Answer in ' . ucfirst($quiz->get_language($quiz->language_id))" />
                                 <x-input id="answer" class="block mt-1 w-full" type="text" name="answer" :value="old('answer')" />
                             </div>
 

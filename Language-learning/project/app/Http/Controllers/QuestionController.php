@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Option;
 use App\Models\Question;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
@@ -30,15 +31,15 @@ class QuestionController extends Controller
     {
         switch($request->question_type)
         {
-            case '1':
+            case 1:
                 return view('questions.question1.create')->withQuiz($quiz);
-            case '2':
+            case 2:
                 return view('questions.question2.create')->withQuiz($quiz);
-            case '3':
+            case 3:
                 return view('questions.question3.create')->withQuiz($quiz);
-            case '4':
+            case 4:
                 return view('questions.question4.create')->withQuiz($quiz);
-            case '5':
+            case 5:
                 return view('questions.question5.create')->withQuiz($quiz);
         }
     }
@@ -59,6 +60,28 @@ class QuestionController extends Controller
         $question->is_correct = true;
         $question->type = $request->type;
         $question->save();
+        if($question->type == 3 || $question->type == 4)
+        {
+            $option = new Option();
+            $option->data = $request->answerA;
+            $option->question_id = $question->id;
+            $option->save();
+
+            $option = new Option();
+            $option->data = $request->answerB;
+            $option->question_id = $question->id;
+            $option->save();
+
+            $option = new Option();
+            $option->data = $request->answerC;
+            $option->question_id = $question->id;
+            $option->save();
+
+            $option = new Option();
+            $option->data = $request->answerD;
+            $option->question_id = $question->id;
+            $option->save();
+        }
         return redirect()->route('quizzes.questions.index', $quiz);
     }
 
