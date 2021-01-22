@@ -7,7 +7,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="flex items-center justify-end mt-4 px-4 pb-5">
+                <div class="flex items-center justify-center mt-4 px-4 pb-5">
                     <form method="post" action="{{route('quizzes.store')}}">
                         @csrf
                         <label for="language">Language: </label>
