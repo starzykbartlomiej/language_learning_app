@@ -54,8 +54,8 @@
                                     </td>
                                 @else
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <form method="get" action="{{ route('quizzes.show',['quiz'=>$quiz->id]) }}">
-                                            <x-button class="ml-4" id="discusion.{{$quiz->id}}">
+                                        <form method="get" action="{{ route('quizzes.solutions.create', $quiz) }}">
+                                            <x-button class="ml-4">
                                                 {{ __('Solve') }}
                                             </x-button>
                                         </form>

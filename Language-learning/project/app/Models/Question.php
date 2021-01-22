@@ -35,4 +35,9 @@ class Question extends Model
                 return 'Build sentence from blocks';
         }
     }
+
+    public function solution()
+    {
+        return $this->hasMany(Solution::class);
+    }
 }

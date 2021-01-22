@@ -64,9 +64,7 @@ class QuizController extends Controller
      */
     public function show(Quiz $quiz)
     {
-        if(Auth::user()->id == $quiz->user_id)
-            return view("quizzes.details")->withquiz($quiz);
-        return view("quizzes.solve")->withQuiz($quiz)->withQuestions($quiz->question);
+        return view("quizzes.details")->withquiz($quiz);
     }
 
     /**

@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <div class="py-12">
-        <form method="post" action="{{route('quizzes.store')}}">
+        <form method="post" action="{{route("quizzes.solutions.store", $quiz)}}">
             @csrf
             @foreach($questions as $question)
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -47,8 +47,9 @@
                                 <div class="flex items-center ">
                                     @for($i ='A'; $i<='D'; $i++)
                                         <div class="flex space-x-4 max-w-7xl mx-auto">
-                                            <label class="container">{{$i}}
-                                                <input type="radio" checked="checked" name="Question_{{$question->id}}">
+                                            <label for="{{$i}}" class="container">{{$i}}
+                                                <input type="radio" checked="checked" name="qustion_{{$question->id}}"
+                                                       id="{{$i}}" value="{{$i}}">
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>
@@ -57,7 +58,7 @@
                                     @break;
                                 @case(4)
                                 <div class="flex items-center mt-4 px-4 pb-5">
-                                    @for($i =0; $i<4; $i++)
+                                    @for($i=0; $i<4; $i++)
                                         <div class="flex space-x-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
                                             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                                                 <img src= {{URL::asset(($question->option[$i]->data))}}
@@ -69,10 +70,11 @@
                                 <div class="flex items-center ">
                                     @for($i ='A'; $i<='D'; $i++)
                                         <div class="flex space-x-4 max-w-7xl mx-auto">
-                                                <label class="container">{{$i}}
-                                                    <input type="radio" checked="checked" name="Question_{{$question->id}}">
-                                                    <span class="checkmark"></span>
-                                                </label>
+                                            <label for="{{$i}}" class="container">{{$i}}
+                                                <input type="radio" checked="checked" name="qustion_{{$question->id}}"
+                                                       id="{{$i}}" value="{{$i}}">
+                                                <span class="checkmark"></span>
+                                            </label>
                                         </div>
                                     @endfor
                                 </div>

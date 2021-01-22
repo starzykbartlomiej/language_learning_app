@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Quiz;
 use App\Models\solution;
 use Illuminate\Http\Request;
 
@@ -22,9 +23,9 @@ class SolutionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Quiz $quiz)
     {
-        //
+        return view("solutions.create")->withQuiz($quiz)->withQuestions($quiz->question);
     }
 
     /**
@@ -33,9 +34,9 @@ class SolutionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Quiz $quiz)
     {
-        //
+        dd($request->request);
     }
 
     /**
