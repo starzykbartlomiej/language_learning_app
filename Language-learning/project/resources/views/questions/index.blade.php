@@ -50,7 +50,7 @@
                     <form method="get" action="{{ route('quizzes.questions.create', $quiz )}}">
                         @csrf
                         <label for="question_type">Question type: </label>
-                        <select class="form-control" name="question_type" id="question_type">
+                        <select class="form-control rounded-md" name="question_type" id="question_type">
                             <option value = 1>{{ __('Word translation') }}</option>
                             <option value = 2>{{ __('Sentence translation') }}</option>
                             <option value = 3>{{ __('Multiple choice') }}</option>

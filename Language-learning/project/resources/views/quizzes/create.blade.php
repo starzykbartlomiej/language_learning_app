@@ -12,7 +12,7 @@
                         @csrf
                         <label for="language">Language: </label>
                         {{--                            <input type="text" name="language">--}}
-                        <select class="form-control" name="language" id="cars">
+                        <select class="form-control rounded-md" name="language" id="cars">
                             @foreach($languages as $language)
                                 <option>{{ ucfirst($language->language) }}</option>
                             @endforeach

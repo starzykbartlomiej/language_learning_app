@@ -36,7 +36,7 @@
 
                         <div class="mt-4">
                             <x-label for="answer" :value="'Correct answer'" />
-                            <select class="form-control" name="answer" id="answer">
+                            <select class="form-control rounded-md" name="answer" id="answer">
                                 <option value = 'a'>{{ __('Answer A') }}</option>
                                 <option value = 'b'>{{ __('Answer B') }}</option>
                                 <option value = 'c'>{{ __('Answer C') }}</option>
