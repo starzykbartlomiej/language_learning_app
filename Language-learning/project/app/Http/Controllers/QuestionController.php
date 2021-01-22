@@ -68,34 +68,34 @@ class QuestionController extends Controller
         if($question->type == 3 || $question->type == 4)
         {
             $option1 = new Option();
-            $image = $request->file('answerA');
+            $image = $request->file('Answer_A');
             $new_name = rand() . '.' . $image->getClientOriginalExtension();
-            $image->move(storage_path('app/public/images'), $new_name);
-            $option1->data = "app/public/images/" . $new_name;
+            $image->move(public_path('images'), $new_name);
+            $option1->data = "images/" . $new_name;
             $option1->question_id = $question->id;
             $option1->save();
 
             $option2 = new Option();
-            $image = $request->file('answerB');
+            $image = $request->file('Answer_B');
             $new_name = rand() . '.' . $image->getClientOriginalExtension();
-            $image->move(storage_path('app/public/images'), $new_name);
-            $option2->data = "app/public/images/" . $new_name;
+            $image->move(public_path('images'), $new_name);
+            $option2->data = "images/" . $new_name;
             $option2->question_id = $question->id;
             $option2->save();
 
             $option3 = new Option();
-            $image = $request->file('answerC');
+            $image = $request->file('Answer_C');
             $new_name = rand() . '.' . $image->getClientOriginalExtension();
-            $image->move(storage_path('app/public/images'), $new_name);
-            $option3->data = "app/public/images/" . $new_name;
+            $image->move(public_path('images'), $new_name);
+            $option3->data = "images/" . $new_name;
             $option3->question_id = $question->id;
             $option3->save();
 
             $option4 = new Option();
-            $image = $request->file('answerD');
+            $image = $request->file('Answer_D');
             $new_name = rand() . '.' . $image->getClientOriginalExtension();
-            $image->move(storage_path('app/public/images'), $new_name);
-            $option4->data = "app/public/images/" . $new_name;
+            $image->move(public_path('images'), $new_name);
+            $option4->data = "images/" . $new_name;
             $option4->question_id = $question->id;
             $option4->save();
 

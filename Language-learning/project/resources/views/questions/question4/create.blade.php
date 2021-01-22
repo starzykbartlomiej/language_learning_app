@@ -17,22 +17,34 @@
                                      :value="old('in_english')" autofocus />
                         </div>
 
-                        <div class="mt-4">
-                            <x-label for="answerA" :value="'answer A'" />
-                            <x-input id="answerA" class="block mt-1 w-full" type="file" name="answerA" :value="old('answerA')" />
-                        </div>
-                        <div class="mt-4">
-                            <x-label for="answerB" :value="'answer B'" />
-                            <x-input id="answerB" class="block mt-1 w-full" type="file" name="answerB" :value="old('answerB')" />
-                        </div>
-                        <div class="mt-4">
-                            <x-label for="answerC" :value="'answer C'" />
-                            <x-input id="answerC" class="block mt-1 w-full" type="file" name="answerC" :value="old('answerC')" />
-                        </div>
-                        <div class="mt-4">
-                            <x-label for="answerD" :value="'answer D'" />
-                            <x-input id="answerD" class="block mt-1 w-full" type="file" name="answerD" :value="old('answerD')" />
-                        </div>
+{{--                        <div class="mt-4">--}}
+{{--                            <x-label for="answerA" :value="'answer A'" />--}}
+{{--                            <x-input id="answerA" class="block mt-1 w-full" type="file" name="answerA" :value="old('answerA')" />--}}
+{{--                        </div>--}}
+{{--                        <div class="mt-4">--}}
+{{--                            <x-label for="answerB" :value="'answer B'" />--}}
+{{--                            <x-input id="answerB" class="block mt-1 w-full" type="file" name="answerB" :value="old('answerB')" />--}}
+{{--                        </div>--}}
+{{--                        <div class="mt-4">--}}
+{{--                            <x-label for="answerC" :value="'answer C'" />--}}
+{{--                            <x-input id="answerC" class="block mt-1 w-full" type="file" name="answerC" :value="old('answerC')" />--}}
+{{--                        </div>--}}
+{{--                        <div class="mt-4">--}}
+{{--                            <x-label for="answerD" :value="'answer D'" />--}}
+{{--                            <x-input id="answerD" class="block mt-1 w-full" type="file" name="answerD" :value="old('answerD')" />--}}
+{{--                        </div>--}}
+                        <x-upload id="Answer A">
+                            <x-slot name="label"> Upload file to A answer</x-slot>
+                        </x-upload>
+                        <x-upload id="Answer B">
+                            <x-slot name="label"> Upload file to B answer</x-slot>
+                        </x-upload>
+                        <x-upload id="Answer C">
+                            <x-slot name="label"> Upload file to C answer</x-slot>
+                        </x-upload>
+                        <x-upload id="Answer D">
+                            <x-slot name="label"> Upload file to D answer</x-slot>
+                        </x-upload>
 
                         <div class="mt-4">
                             <x-label for="answer" :value="'Correct answer'" />
