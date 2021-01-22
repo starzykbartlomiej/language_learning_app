@@ -33,6 +33,12 @@ class Quiz extends Model
         $lang = Language::query()->where('id', $id)->first('language');
         return $lang->language;
     }
+
+    public function solution()
+    {
+        return $this->hasMany(Solution::class);
+    }
+
     public function is_owner($owner)
     {
         $logged = auth()->user()->getAuthIdentifier();

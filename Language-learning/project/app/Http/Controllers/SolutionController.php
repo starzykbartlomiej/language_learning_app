@@ -37,18 +37,17 @@ class SolutionController extends Controller
      */
     public function store(Request $request, Quiz $quiz)
     {
-
-
         $keys = $request->keys();
         $keys = array_slice($keys, 1);
-
         $answers = $request->all();
         $answers = array_slice($answers, 1);
 
         $i=0;
+        $total = 0;
         foreach($answers as $answer)
         {
             $solution = new Solution();
+            $solution->quiz_id = $quiz->id;
             $solution->user_id  = Auth::id();
             $solution->question_id = $keys[$i];
             $solution->answer = $answer;
@@ -56,7 +55,12 @@ class SolutionController extends Controller
             $i++;
         }
 
-        return view();
+        $solutions = $quiz->solution->where('user_id', Auth::id());
+        return view('solutions.index')->withQuiz($quiz)
+                                            ->withQuestions($quiz->question)
+                                            ->withKeys($keys)
+                                            ->withSolutions($solutions)
+                                            ->withTotal($total);
     }
 
     /**
