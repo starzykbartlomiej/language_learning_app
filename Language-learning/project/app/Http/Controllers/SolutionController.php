@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Quiz;
 use App\Models\solution;
+use Auth;
 use Illuminate\Http\Request;
 
 class SolutionController extends Controller
@@ -36,7 +37,17 @@ class SolutionController extends Controller
      */
     public function store(Request $request, Quiz $quiz)
     {
-        dd($request->request);
+        $solution = new Solution();
+        $solution->user_id  = Auth::id();
+        foreach($request->request as $question_answer)
+        {
+            if(is_int($question_answer[0]))
+            {
+                $solution->question_id = $question_answer[0];
+                $solution->answer = $question_answer[1];
+            }
+        }
+        return redirect("quizzes.index");
     }
 
     /**

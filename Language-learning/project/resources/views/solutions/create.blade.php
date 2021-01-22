@@ -24,14 +24,14 @@
                             @switch($question->type)
                                 @case(1)
                                 <div class="mt-4">
-                                    <x-label for="answer" :value="'Translate word to ' . ucfirst($quiz->get_language($quiz->language_id))" />
-                                    <x-input id="answer" class="block mt-1 w-full" type="text" name="answer" :value="old('answer')" />
+                                    <x-label for="{{$question->id}}" :value="'Translate word to ' . ucfirst($quiz->get_language($quiz->language_id))" />
+                                    <x-input id="{{$question->id}}" class="block mt-1 w-full" type="text" name="{{$question->id}}" :value="old($question->id)" />
                                 </div>
                                     @break;
                                 @case(2)
                                 <div class="mt-4">
-                                    <x-label for="answer" :value="'Translate sentence to ' . ucfirst($quiz->get_language($quiz->language_id))" />
-                                    <x-input id="answer" class="block mt-1 w-full" type="text" name="answer" :value="old('answer')" />
+                                    <x-label for="{{$question->id}}" :value="'Translate sentence to ' . ucfirst($quiz->get_language($quiz->language_id))" />
+                                    <x-input id="{{$question->id}}" class="block mt-1 w-full" type="text" name="{{$question->id}}" :value="old($question->id)" />
                                 </div>
                                     @break;
                                 @case(3)
@@ -48,7 +48,7 @@
                                     @for($i ='A'; $i<='D'; $i++)
                                         <div class="flex space-x-4 max-w-7xl mx-auto">
                                             <label for="{{$i}}" class="container">{{$i}}
-                                                <input type="radio" checked="checked" name="qustion_{{$question->id}}"
+                                                <input type="radio" checked="checked" name="{{$question->id}}"
                                                        id="{{$i}}" value="{{$i}}">
                                                 <span class="checkmark"></span>
                                             </label>
@@ -71,7 +71,7 @@
                                     @for($i ='A'; $i<='D'; $i++)
                                         <div class="flex space-x-4 max-w-7xl mx-auto">
                                             <label for="{{$i}}" class="container">{{$i}}
-                                                <input type="radio" checked="checked" name="qustion_{{$question->id}}"
+                                                <input type="radio" checked="checked" name="{{$question->id}}"
                                                        id="{{$i}}" value="{{$i}}">
                                                 <span class="checkmark"></span>
                                             </label>
