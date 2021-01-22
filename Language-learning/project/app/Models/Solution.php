@@ -18,4 +18,5 @@ class Solution extends Model
     {
         return $this->belongsTo(User::class);
     }
+
 }
