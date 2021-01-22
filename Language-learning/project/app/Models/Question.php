@@ -32,7 +32,7 @@ class Question extends Model
             case 4:
                 return 'Multiple image choice';
             case 5:
-                return 'Build sentece from blocks';
+                return 'Build sentence from blocks';
         }
     }
 }
