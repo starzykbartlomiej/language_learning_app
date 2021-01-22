@@ -94,7 +94,7 @@
                                                 </td>
                                             @else
                                                 <td class="px-6 py-4 whitespace-nowrap">
-                                                    <form method="get" action="{{ route('quizzes.solutions.create', $quiz) }}">
+                                                    <form method="get" action="{{ route('quizzes.comments.index', $quiz) }}">
                                                         <x-button class="ml-4">
                                                             {{ __('Discuss') }}
                                                         </x-button>
