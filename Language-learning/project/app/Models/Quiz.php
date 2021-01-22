@@ -39,6 +39,11 @@ class Quiz extends Model
         return $this->hasMany(Solution::class);
     }
 
+    public function result()
+    {
+        return $this->hasMany(Result::class);
+    }
+
     public function is_owner($owner)
     {
         $logged = auth()->user()->getAuthIdentifier();

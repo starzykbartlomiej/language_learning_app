@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
+use App\Models\Result;
 use App\Models\Solution;
 use Auth;
 use Illuminate\Http\Request;
@@ -56,6 +57,14 @@ class SolutionController extends Controller
         }
 
         $solutions = $quiz->solution->where('user_id', Auth::id());
+
+        $result = new Result();
+        $result->quiz_id  = $quiz->id;
+        $result->user_id = Auth::id();
+        $result->points_gained = $total;
+        $result->save();
+
+
         return view('solutions.index')->withQuiz($quiz)
                                             ->withQuestions($quiz->question)
                                             ->withKeys($keys)

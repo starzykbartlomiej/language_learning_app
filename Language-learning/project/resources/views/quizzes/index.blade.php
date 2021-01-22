@@ -84,6 +84,7 @@
                                                 </div>
                                                 <div class="text-sm text-gray-500">{{ucfirst($quiz->language->language)}}</div>
                                             </td>
+                                            @if($quiz->result->where('user_id', Auth::id())->where('quiz_id', $quiz->id)->count()==0)
                                                 <td class="px-6 py-4 whitespace-nowrap">
                                                     <form method="get" action="{{ route('quizzes.solutions.create', $quiz) }}">
                                                         <x-button class="ml-4">
@@ -91,6 +92,15 @@
                                                         </x-button>
                                                     </form>
                                                 </td>
+                                            @else
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <form method="get" action="{{ route('quizzes.solutions.create', $quiz) }}">
+                                                        <x-button class="ml-4">
+                                                            {{ __('Discuss') }}
+                                                        </x-button>
+                                                    </form>
+                                                </td>
+                                            @endif
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         </td>
                                     </tr>

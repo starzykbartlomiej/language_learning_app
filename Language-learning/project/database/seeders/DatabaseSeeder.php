@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Result;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 
@@ -20,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(QuestionSeeder::class);
         $this->call(OptionSeeder::class);
         $this->call(CommentSeeder::class);
+        $this->call(ResultSeeder::class);
     }
 }
