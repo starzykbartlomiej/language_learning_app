@@ -23,62 +23,62 @@
                             <br/>
                             @switch($question->type)
                                 @case(1)
-                                <div class="mt-4">
-                                    <x-label for="{{$question->id}}" :value="'Translate word to ' . ucfirst($quiz->get_language($quiz->language_id))" />
-                                    <x-input id="{{$question->id}}" class="block mt-1 w-full" type="text" name="{{$question->id}}" :value="old($question->id)" />
-                                </div>
-                                    @break;
+                                    <div class="mt-4">
+                                        <x-label for="{{$question->id}}" :value="'Translate word to ' . ucfirst($quiz->get_language($quiz->language_id))" />
+                                        <x-input id="{{$question->id}}" class="block mt-1 w-full" type="text" name="{{$question->id}}" :value="old($question->id)" />
+                                    </div>
+                                @break;
                                 @case(2)
-                                <div class="mt-4">
-                                    <x-label for="{{$question->id}}" :value="'Translate sentence to ' . ucfirst($quiz->get_language($quiz->language_id))" />
-                                    <x-input id="{{$question->id}}" class="block mt-1 w-full" type="text" name="{{$question->id}}" :value="old($question->id)" />
-                                </div>
-                                    @break;
+                                    <div class="mt-4">
+                                        <x-label for="{{$question->id}}" :value="'Translate sentence to ' . ucfirst($quiz->get_language($quiz->language_id))" />
+                                        <x-input id="{{$question->id}}" class="block mt-1 w-full" type="text" name="{{$question->id}}" :value="old($question->id)" />
+                                    </div>
+                                @break;
                                 @case(3)
-                                <div class="flex items-center mt-4 px-4 pb-5">
-                                    @for($i =0; $i<4; $i++)
-                                        <div class="flex space-x-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
-                                            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                                                <a>{{$question->option[$i]->data}}</a>
+                                    <div class="flex items-center mt-4 px-4 pb-5">
+                                        @for($i =0; $i<4; $i++)
+                                            <div class="flex space-x-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
+                                                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                                                    <a>{{$question->option[$i]->data}}</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endfor
-                                </div>
-                                <div class="flex items-center ">
-                                    @for($i ='A'; $i<='D'; $i++)
-                                        <div class="flex space-x-4 max-w-7xl mx-auto">
-                                            <label for="{{$i}}" class="container">{{$i}}
-                                                <input type="radio" checked="checked" name="{{$question->id}}"
-                                                       id="{{$i}}" value="{{$i}}">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </div>
-                                    @endfor
-                                </div>
-                                    @break;
+                                        @endfor
+                                    </div>
+                                    <div class="flex items-center ">
+                                        @for($i ='A'; $i<='D'; $i++)
+                                            <div class="flex space-x-4 max-w-7xl mx-auto">
+                                                <label for="{{$i}}" class="container">{{$i}}
+                                                    <input type="radio" checked="checked" name="{{$question->id}}"
+                                                           id="{{$i}}" value="{{$i}}">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                        @endfor
+                                    </div>
+                                @break;
                                 @case(4)
-                                <div class="flex items-center mt-4 px-4 pb-5">
-                                    @for($i=0; $i<4; $i++)
-                                        <div class="flex space-x-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
-                                            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                                                <img src= {{URL::asset(($question->option[$i]->data))}}
-                                                    alt="{{$question->option[1]->id}}" style="height:100px">
+                                    <div class="flex items-center mt-4 px-4 pb-5">
+                                        @for($i=0; $i<4; $i++)
+                                            <div class="flex space-x-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
+                                                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                                                    <img src= {{URL::asset(($question->option[$i]->data))}}
+                                                        alt="{{$question->option[1]->id}}" style="height:100px">
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endfor
-                                </div>
-                                <div class="flex items-center ">
-                                    @for($i ='A'; $i<='D'; $i++)
-                                        <div class="flex space-x-4 max-w-7xl mx-auto">
-                                            <label for="{{$i}}" class="container">{{$i}}
-                                                <input type="radio" checked="checked" name="{{$question->id}}"
-                                                       id="{{$i}}" value="{{$i}}">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </div>
-                                    @endfor
-                                </div>
-                                    @break;
+                                        @endfor
+                                    </div>
+                                    <div class="flex items-center ">
+                                        @for($i ='A'; $i<='D'; $i++)
+                                            <div class="flex space-x-4 max-w-7xl mx-auto">
+                                                <label for="{{$i}}" class="container">{{$i}}
+                                                    <input type="radio" checked="checked" name="{{$question->id}}"
+                                                           id="{{$i}}" value="{{$i}}">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                        @endfor
+                                    </div>
+                                @break;
                                 @case(5)
                                    @break;
                             @endswitch

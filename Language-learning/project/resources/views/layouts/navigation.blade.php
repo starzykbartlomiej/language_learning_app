@@ -5,7 +5,7 @@
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
-                            <a href="{{ route('dashboard') }}">
+                            <a href="{{ route('dashboard.index') }}">
                                 <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
                             </a>
                         </div>
@@ -13,7 +13,7 @@
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                                 <a href="{{route('quizzes.index')}}" active="{{request()->routeIs('quizzes.*')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Quizzes</a>
-                                <a href="{{route('dashboard')}}" active="{{request()->routeIs('dashboard')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                                <a href="{{route('dashboard.index')}}" active="{{request()->routeIs('dashboard')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
                             </div>
                         </div>
                     </div>

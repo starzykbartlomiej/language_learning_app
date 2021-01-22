@@ -17,9 +17,7 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $user=Auth::user();
-        $languges=Language::all();
-        $quizzes = Quiz::all();
+        $quizzes = Quiz::all()->where('user_id', '!=' , Auth::id());
         return view('quizzes.index')->withQuizzes($quizzes);
     }
 

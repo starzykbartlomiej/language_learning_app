@@ -65,7 +65,8 @@ class QuestionController extends Controller
         $question->is_correct = true;
         $question->type = $request->type;
         $question->save();
-        if($question->type == 3 || $question->type == 4)
+
+        if($question->type == 4)
         {
             $option1 = new Option();
             $image = $request->file('Answer_A');
@@ -98,8 +99,30 @@ class QuestionController extends Controller
             $option4->data = "images/" . $new_name;
             $option4->question_id = $question->id;
             $option4->save();
-
         }
+        else if($question->type == 3)
+        {
+            $option1 = new Option();
+            $option1->data = $request->answerA;
+            $option1->question_id = $question->id;
+            $option1->save();
+
+            $option2 = new Option();
+            $option2->data = $request->answerB;
+            $option2->question_id = $question->id;
+            $option2->save();
+
+            $option3 = new Option();
+            $option3->data = $request->answerC;
+            $option3->question_id = $question->id;
+            $option3->save();
+
+            $option4 = new Option();
+            $option4->data = $request->answerD;
+            $option4->question_id = $question->id;
+            $option4->save();
+        }
+
         return redirect()->route('quizzes.questions.index', $quiz);
     }
 

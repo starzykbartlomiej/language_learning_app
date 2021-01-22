@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('List of Quizzes') }}
+            {{ __('Pick a quiz to solve') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -70,6 +70,11 @@
                                                         <img class="h-10 w-10 rounded-full"
                                                              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/255px-Flag_of_Portugal.svg.png"
                                                              alt="">
+                                                        @case('Polish')
+                                                        <img class="h-10 w-10 rounded-full"
+                                                             src="https://cdn.britannica.com/52/3552-004-D849A1D3/Flag-Poland.jpg"
+                                                             alt="">
+                                                        @break;
                                                         @default
                                                         <img class="h-10 w-10 rounded-full"
                                                              src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/International_Flag_of_Planet_Earth.svg/1280px-International_Flag_of_Planet_Earth.svg.png"
@@ -79,15 +84,6 @@
                                                 </div>
                                                 <div class="text-sm text-gray-500">{{ucfirst($quiz->language->language)}}</div>
                                             </td>
-                                            @if($quiz->is_owner($quiz->user_id))
-                                                <td class="px-6 py-4 whitespace-nowrap">
-                                                    <form method="get" action="{{ route('quizzes.show',['quiz'=>$quiz->id]) }}">
-                                                        <x-button class="ml-4" id="discusion.{{$quiz->id}}">
-                                                            {{ __('Details') }}
-                                                        </x-button>
-                                                    </form>
-                                                </td>
-                                            @else
                                                 <td class="px-6 py-4 whitespace-nowrap">
                                                     <form method="get" action="{{ route('quizzes.solutions.create', $quiz) }}">
                                                         <x-button class="ml-4">
@@ -95,8 +91,6 @@
                                                         </x-button>
                                                     </form>
                                                 </td>
-                                            @endif
-
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         </td>
                                     </tr>
@@ -110,21 +104,6 @@
             </div>
         </div>
     </div>
-
-
-
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg ">
-                <div class="items-center mt-4 px-4 pb-5">
-                    <div class="flex items-center justify-center max-w-7xl mx-auto sm:px-6 lg:px-8">
-                            <form method="get" action="{{ route('quizzes.create') }}">
-                                <x-button class="ml-4">
-                                    {{ __('Create new...') }}
-                                </x-button>
-                            </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <br/>
     </div>
 </x-app-layout>

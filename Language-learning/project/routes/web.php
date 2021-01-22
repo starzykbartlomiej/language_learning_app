@@ -21,9 +21,7 @@ Route::resource('/comments', App\Http\Controllers\CommentController::class)->mid
 
 Route::resource('/quizzes', App\Http\Controllers\QuizController::class)->middleware('auth');
 Route::resource('/languages',App\Http\Controllers\LanguageController::class)->middleware('auth');
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::resource('dashboard', App\Http\Controllers\Dashboard::class)->middleware('auth');
 Route::resource('quizzes.comments', App\Http\Controllers\QuizCommentController::class)->middleware('auth');
 Route::resource('quizzes.questions', App\Http\Controllers\QuestionController::class)->middleware('auth');
 Route::resource('quizzes.solutions', App\Http\Controllers\SolutionController::class)->middleware('auth');
