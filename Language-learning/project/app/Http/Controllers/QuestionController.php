@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Option;
 use App\Models\Question;
 use App\Models\Quiz;
+use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Storage;
 
 class QuestionController extends Controller
 {
@@ -53,6 +55,9 @@ class QuestionController extends Controller
     public function store(Request $request, Quiz $quiz)
     {
         //TODO validation
+        // ...
+
+        //TODO refactor
         $question = new Question();
         $question->in_english = $request->in_english;
         $question->answer = $request->answer;
@@ -62,25 +67,38 @@ class QuestionController extends Controller
         $question->save();
         if($question->type == 3 || $question->type == 4)
         {
-            $option = new Option();
-            $option->data = $request->answerA;
-            $option->question_id = $question->id;
-            $option->save();
+            $option1 = new Option();
+            $image = $request->file('answerA');
+            $new_name = rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(storage_path('app/public/images'), $new_name);
+            $option1->data = "app/public/images/" . $new_name;
+            $option1->question_id = $question->id;
+            $option1->save();
 
-            $option = new Option();
-            $option->data = $request->answerB;
-            $option->question_id = $question->id;
-            $option->save();
+            $option2 = new Option();
+            $image = $request->file('answerB');
+            $new_name = rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(storage_path('app/public/images'), $new_name);
+            $option2->data = "app/public/images/" . $new_name;
+            $option2->question_id = $question->id;
+            $option2->save();
 
-            $option = new Option();
-            $option->data = $request->answerC;
-            $option->question_id = $question->id;
-            $option->save();
+            $option3 = new Option();
+            $image = $request->file('answerC');
+            $new_name = rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(storage_path('app/public/images'), $new_name);
+            $option3->data = "app/public/images/" . $new_name;
+            $option3->question_id = $question->id;
+            $option3->save();
 
-            $option = new Option();
-            $option->data = $request->answerD;
-            $option->question_id = $question->id;
-            $option->save();
+            $option4 = new Option();
+            $image = $request->file('answerD');
+            $new_name = rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(storage_path('app/public/images'), $new_name);
+            $option4->data = "app/public/images/" . $new_name;
+            $option4->question_id = $question->id;
+            $option4->save();
+
         }
         return redirect()->route('quizzes.questions.index', $quiz);
     }

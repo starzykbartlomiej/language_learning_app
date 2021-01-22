@@ -24,7 +24,10 @@
                                     @break;
                                 @case(4)
                                 <div class="flex items-center">
-                                    <img src={{URL::asset($question->option[0]->data)}} alt="{{$question->option[0]->id}}" style="width:150px">
+                                    <br>
+                                    <br>
+
+                                    <img src= {{resource_path("app/public/images") . "/1789722696.jpg"}} alt="{{$question->option[0]->id}}" style="width:150px">
                                     <img src={{URL::asset($question->option[1]->data)}} alt="{{$question->option[1]->id}}" style="width:150px">
                                     <img src={{URL::asset($question->option[2]->data)}} alt="{{$question->option[2]->id}}" style="width:150px">
                                     <img src={{URL::asset($question->option[3]->data)}} alt="{{$question->option[3]->id}}" style="width:150px">
