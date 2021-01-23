@@ -41,7 +41,7 @@
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-wrap">
-                                                <div class="text-sm text-gray-500">{{$comment->text}} {{$comment->id}}</div>
+                                                <div class="text-sm text-gray-500">{{$comment->text}} }</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-wrap">
                                                 <form method="get" action="{{ route('comments.subcomments.index', $comment) }}">

@@ -39,7 +39,7 @@
                                             </div>
                                         </div>
                                         <td class="px-6 py-4 whitespace-wrap">
-                                            <div class="text-sm text-gray-500">{{$comment->text}} {{$comment->id}}</div>
+                                            <div class="text-sm text-gray-500">{{$comment->text}}</div>
                                         </td>
                                         </td>
                                     </tr>
@@ -97,6 +97,19 @@
                     <x-button class="ml-4">
 
                         {{ __('Add answer') }}
+
+                    </x-button>
+
+                </form>
+            </div>
+        </div>
+        <div class="items-center mt-4 px-4 pb-5">
+            <div class="flex items-center justify-center max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <form method="get" action="{{ route('quizzes.index') }}">
+
+                    <x-button class="ml-4">
+
+                        {{ __('Go back') }}
 
                     </x-button>
 
