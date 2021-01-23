@@ -27,7 +27,7 @@
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
                                     <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap">
+                                        <td class="px-6 py-4 whitespace-wrap">
                                         <div class="flex items-center">
                                             <div class="ml-4">
                                                 <div class="text-sm font-medium text-gray-900">
@@ -38,9 +38,9 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        </td>
                                         <td class="px-6 py-4 whitespace-wrap">
                                             <div class="text-sm text-gray-500">{{$comment->text}}</div>
-                                        </td>
                                         </td>
                                     </tr>
                                         @foreach($subcomments as $subcomment)
@@ -75,13 +75,13 @@
                                                             <x-button class="ml-4">
                                                                 {{ __('Delete') }}
                                                             </x-button>
+                                                        </form>
                                                     </td>
                                                 @endif
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    </form>
-                                    </tab>
+                                    </table>
                             </div>
                         </div>
                     </div>
