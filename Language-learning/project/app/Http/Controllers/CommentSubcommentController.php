@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Quiz;
 use App\Models\Subcomment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,7 @@ class CommentSubcommentController extends Controller
     public function index(Comment $comment)
     {
         $subcomments=Subcomment::where('comment_id',$comment->id)->get();
+        Quiz::where('id',$comment->quiz_id);
         return view('commentssubcomments.index')->withComment($comment)->withSubcomments($subcomments);
     }
 
@@ -76,7 +78,7 @@ class CommentSubcommentController extends Controller
      */
     public function edit(Comment $comment, Subcomment $subcomment)
     {
-        //
+        return view('commentssubcomments.edit')->withComment($comment)->withSubcomment($subcomment);
     }
 
     /**
@@ -89,7 +91,17 @@ class CommentSubcommentController extends Controller
      */
     public function update(Request $request, Comment $comment, Subcomment $subcomment)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'text' => 'required',
+        ]);
+        $subcomment->title = $request->title;
+        $subcomment->text = $request->text;
+        $subcomment->comment_id = $comment->id;
+        $subcomment->user_id=$id = Auth::id();
+        $subcomment->save();
+
+        return redirect(route('comments.subcomments.index', $comment));
     }
 
     /**
@@ -101,6 +113,7 @@ class CommentSubcommentController extends Controller
      */
     public function destroy(Comment $comment, Subcomment $subcomment)
     {
-        //
+        $subcomment->delete();
+        return redirect(route('comments.subcomments.index',$comment));
     }
 }

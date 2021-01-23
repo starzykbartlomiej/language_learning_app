@@ -42,7 +42,9 @@
                                             <div class="text-sm text-gray-500">{{$comment->text}} {{$comment->id}}</div>
                                         </td>
                                         </td>
+                                    </tr>
                                         @foreach($subcomments as $subcomment)
+                                            <tr>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="flex items-center">
                                                     <div class="ml-4">
@@ -58,6 +60,24 @@
                                             <td class="px-6 py-4 whitespace-wrap">
                                                 <div class="text-sm text-gray-500">{{$subcomment->text}} {{$subcomment->id}}</div>
                                             </td>
+                                                @if($subcomment->user_id==\Illuminate\Support\Facades\Auth::id())
+                                                    <td class="px-6 py-4 whitespace-wrap">
+                                                        <form method="get" action="{{ route('comments.subcomments.edit',  ['comment'=>$comment, 'subcomment'=>$subcomment]) }}">
+                                                            <x-button class="ml-4">
+                                                                {{ __('Edit') }}
+                                                            </x-button>
+                                                        </form>
+                                                    </td>
+                                                    <td class="px-6 py-4 whitespace-wrap">
+                                                        <form method="post" action="{{ route('comments.subcomments.destroy',  ['comment'=>$comment, 'subcomment'=>$subcomment]) }}">
+                                                            @csrf
+                                                            @method("DELETE")
+                                                            <x-button class="ml-4">
+                                                                {{ __('Delete') }}
+                                                            </x-button>
+                                                    </td>
+                                                @endif
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                     </form>
@@ -83,6 +103,19 @@
                 </form>
             </div>
         </div>
+{{--        <div class="items-center mt-4 px-4 pb-5">--}}
+{{--            <div class="flex items-center justify-center max-w-7xl mx-auto sm:px-6 lg:px-8">--}}
+{{--                <form method="post" action="{{ route('quizzes.comments.index',\App\Models\Quiz::where('id',$comment->quiz_id)) }}">--}}
+
+{{--                    <x-button class="ml-4">--}}
+
+{{--                        {{ __('Go back') }}--}}
+
+{{--                    </x-button>--}}
+
+{{--                </form>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </div>
     <br/>
     </div>
