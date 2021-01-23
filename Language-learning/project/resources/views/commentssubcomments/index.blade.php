@@ -27,53 +27,41 @@
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
                                     <tr>
-                                        @foreach($comments as $comment)
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">
+                                                    {{$comment->title}}
+                                                </div>
+                                                <div class="text-sm text-gray-500">
+                                                    {{json_decode(\App\Models\User::select('email')->where('id',$comment->user_id)->first(),true)['email']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <td class="px-6 py-4 whitespace-wrap">
+                                            <div class="text-sm text-gray-500">{{$comment->text}} {{$comment->id}}</div>
+                                        </td>
+                                        </td>
+                                        @foreach($subcomments as $subcomment)
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="flex items-center">
                                                     <div class="ml-4">
                                                         <div class="text-sm font-medium text-gray-900">
-                                                            {{$comment->title}}
+                                                            {{$subcomment->title}}
                                                         </div>
                                                         <div class="text-sm text-gray-500">
-                                                            {{json_decode(\App\Models\User::select('email')->where('id',$comment->user_id)->first(),true)['email']}}
+                                                            {{json_decode(\App\Models\User::select('email')->where('id',$subcomment->user_id)->first(),true)['email']}}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-wrap">
-                                                <div class="text-sm text-gray-500">{{$comment->text}} {{$comment->id}}</div>
+                                                <div class="text-sm text-gray-500">{{$subcomment->text}} {{$subcomment->id}}</div>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-wrap">
-                                                <form method="get" action="{{ route('comments.subcomments.index', $comment) }}">
-                                                    <x-button class="ml-4">
-                                                        {{ __('Go to discussion') }}
-                                                    </x-button>
-                                                </form>
-                                            </td>
-                                            @if($comment->user_id==\Illuminate\Support\Facades\Auth::id())
-                                                <td class="px-6 py-4 whitespace-wrap">
-                                                    <form method="get" action="{{ route('quizzes.comments.edit',  ['quiz'=>$quiz, 'comment'=>$comment]) }}">
-                                                        <x-button class="ml-4">
-                                                            {{ __('Edit') }}
-                                                        </x-button>
-                                                    </form>
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-wrap">
-                                                    <form method="post" action="{{ route('quizzes.comments.destroy',  ['quiz'=>$quiz, 'comment'=>$comment]) }}">
-                                                        @csrf
-                                                        @method("DELETE")
-                                                        <x-button class="ml-4">
-                                                            {{ __('Delete') }}
-                                                        </x-button>
-                                                </td>
-                                            @endif
-                                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            </td>
-                                    </tr>
-                                    @endforeach
+                                        @endforeach
                                     </tbody>
                                     </form>
-                                </tab
+                                    </tab>
                             </div>
                         </div>
                     </div>
@@ -84,21 +72,18 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="items-center mt-4 px-4 pb-5">
             <div class="flex items-center justify-center max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <form method="get" action="{{ route('quizzes.comments.create',$quiz) }}">
+                <form method="get" action="{{ route('comments.subcomments.create',$comment) }}">
 
-                            <x-button class="ml-4">
+                    <x-button class="ml-4">
 
-                                      {{ __('Add new comments') }}
+                        {{ __('Add answer') }}
 
-                                 </x-button>
+                    </x-button>
 
-                         </form>
+                </form>
             </div>
         </div>
     </div>
-
     <br/>
     </div>
 </x-app-layout>
-
-
