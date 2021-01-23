@@ -58,7 +58,7 @@
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-wrap">
-                                                <div class="text-sm text-gray-500">{{$subcomment->text}} {{$subcomment->id}}</div>
+                                                <div class="text-sm text-gray-500">{{$subcomment->text}}</div>
                                             </td>
                                                 @if($subcomment->user_id==\Illuminate\Support\Facades\Auth::id())
                                                     <td class="px-6 py-4 whitespace-wrap">

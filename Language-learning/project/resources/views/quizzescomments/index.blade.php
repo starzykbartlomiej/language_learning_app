@@ -41,7 +41,7 @@
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-wrap">
-                                                <div class="text-sm text-gray-500">{{$comment->text}} }</div>
+                                                <div class="text-sm text-gray-500">{{$comment->text}}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-wrap">
                                                 <form method="get" action="{{ route('comments.subcomments.index', $comment) }}">
@@ -88,7 +88,7 @@
 
                             <x-button class="ml-4">
 
-                                      {{ __('Add new comments') }}
+                                      {{ __('Add new comment') }}
 
                                  </x-button>
 
