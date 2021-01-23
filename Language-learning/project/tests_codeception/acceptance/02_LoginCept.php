@@ -10,9 +10,11 @@ $I->seeCurrentUrlEquals('/login');
 $I->fillField('email', 'john.doe@gmail.com');
 $I->fillField('password', 'secret');
 
-$I->click('Login');
+$I->click('Sign in');
 
 $I->seeCurrentUrlEquals('/dashboard');
 
-$I->see('John Doe');
-$I->see("You're logged in!");
+$I->see('Edit your quizzes');
+$I->see('Creator Name');
+$I->see('Language');
+//$I->see("You're logged in!");
