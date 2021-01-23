@@ -35,7 +35,7 @@ CREATE TABLE `comments` (
   KEY `comments_user_id_foreign` (`user_id`),
   CONSTRAINT `comments_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`id`) ON DELETE CASCADE,
   CONSTRAINT `comments_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'Aut voluptatem quia nostrum vero magni animi.','Tempore numquam quia suscipit. Ea voluptatibus unde quo fugit vitae quasi.','2021-01-20 17:21:01','2021-01-20 17:21:01',1,1),(2,'Non ex sequi quo nisi rerum voluptatem.','Ad aspernatur laudantium cumque voluptas officia rerum libero. Quia quis ut modi voluptatem eaque dolores sit. Corporis est laborum enim sapiente. Sint quis atque consectetur.','2021-01-20 17:21:01','2021-01-20 17:21:01',1,2),(3,'Rem quisquam expedita non est dolorem.','A consectetur consequatur consequuntur libero ab omnis et. Rerum aperiam molestiae aut sit ducimus quibusdam impedit. Earum est culpa unde ducimus sunt. Ducimus error modi vero minima expedita molestias.','2021-01-20 17:21:01','2021-01-20 17:21:01',1,3),(4,'Minus amet nulla ut dolorem et id sit.','Tempore asperiores voluptatibus nesciunt nisi qui. Qui nemo eos pariatur voluptate quae alias. Quo itaque impedit aperiam blanditiis iste. Sint eum deleniti minus dolorem aliquid explicabo est.','2021-01-20 17:21:01','2021-01-20 17:21:01',1,4);
+INSERT INTO `comments` VALUES (1,'Ut autem voluptas impedit ut tempora.','Eos quia quia rerum quod ipsam. Perferendis consequatur aliquid odit reiciendis dicta consectetur. Voluptatem qui illo excepturi dolore architecto. Velit voluptatem odit vel vel repudiandae aperiam.','2021-01-23 10:26:29','2021-01-23 10:26:29',1,1),(2,'Dolor et et nostrum.','Ipsa rerum et optio omnis accusantium. Laudantium consequatur velit aliquam illo porro labore magni. Esse nesciunt maiores culpa laudantium optio. Et eveniet fugiat in aut et consequatur.','2021-01-23 10:26:29','2021-01-23 10:26:29',1,2),(3,'Eos voluptatibus ea rem incidunt nostrum.','Sit dolorem eligendi numquam. Deserunt placeat recusandae rem dolore ratione. Et quisquam ipsa aliquam maxime excepturi numquam alias.','2021-01-23 10:26:29','2021-01-23 10:26:29',1,3),(4,'Veritatis reiciendis est et dolor itaque tempora.','Ut est est odio explicabo atque officia architecto. Et sit eaque rem in neque rem harum. Et amet sit optio veritatis unde numquam temporibus. Aliquid alias quisquam vel aperiam porro.','2021-01-23 10:26:29','2021-01-23 10:26:29',1,4),(5,'Kuba','madry gosc','2021-01-23 10:26:29','2021-01-23 10:26:29',2,1);
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,7 +100,7 @@ CREATE TABLE `languages` (
 
 LOCK TABLES `languages` WRITE;
 /*!40000 ALTER TABLE `languages` DISABLE KEYS */;
-INSERT INTO `languages` VALUES (1,'german',NULL,NULL),(2,'english',NULL,NULL);
+INSERT INTO `languages` VALUES (1,'german',NULL,NULL),(2,'spanish',NULL,NULL);
 /*!40000 ALTER TABLE `languages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,7 +116,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2020_12_15_145710_create_comments_table',1),(5,'2021_01_12_113821_create_quizzes_table',1),(6,'2021_01_12_135444_create_questions_table',1),(7,'2021_01_12_143411_add_quiz_id_and_user_id_to_comments_table',1),(8,'2021_01_12_172347_create_options_table',1),(9,'2021_01_13_134656_create_languages_table',1),(10,'2021_01_13_135157_add_language_id_to_quizzes_table',1),(11,'2021_01_15_203911_set_language_unique_on_language_table',1);
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2020_12_15_145710_create_comments_table',1),(5,'2021_01_12_113821_create_quizzes_table',1),(6,'2021_01_12_135444_create_questions_table',1),(7,'2021_01_12_143411_add_quiz_id_and_user_id_to_comments_table',1),(8,'2021_01_12_172347_create_options_table',1),(9,'2021_01_13_134656_create_languages_table',1),(10,'2021_01_13_135157_add_language_id_to_quizzes_table',1),(11,'2021_01_15_203911_set_language_unique_on_language_table',1),(12,'2021_01_22_142810_create_solutions_table',1),(13,'2021_01_22_161644_add_quiz_field_to_solutions_table',1),(14,'2021_01_22_223425_create_results_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,7 +154,7 @@ CREATE TABLE `options` (
 
 LOCK TABLES `options` WRITE;
 /*!40000 ALTER TABLE `options` DISABLE KEYS */;
-INSERT INTO `options` VALUES (1,'https://via.placeholder.com/640x480.png/008833?text=cats+consequatur',1,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(2,'https://via.placeholder.com/640x480.png/0011ee?text=cats+laborum',1,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(3,'https://via.placeholder.com/640x480.png/00ffbb?text=cats+ratione',1,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(4,'https://via.placeholder.com/640x480.png/001166?text=cats+distinctio',1,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(5,'https://via.placeholder.com/640x480.png/008899?text=cats+id',2,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(6,'https://via.placeholder.com/640x480.png/003322?text=cats+aliquid',2,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(7,'https://via.placeholder.com/640x480.png/006611?text=cats+maiores',2,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(8,'https://via.placeholder.com/640x480.png/000033?text=cats+quod',2,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(9,'https://via.placeholder.com/640x480.png/005544?text=cats+accusamus',3,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(10,'https://via.placeholder.com/640x480.png/00bb00?text=cats+et',3,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(11,'https://via.placeholder.com/640x480.png/007799?text=cats+sapiente',3,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(12,'https://via.placeholder.com/640x480.png/006655?text=cats+autem',3,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(13,'https://via.placeholder.com/640x480.png/008833?text=cats+totam',4,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(14,'https://via.placeholder.com/640x480.png/002200?text=cats+aut',4,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(15,'https://via.placeholder.com/640x480.png/00ffff?text=cats+quis',4,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(16,'https://via.placeholder.com/640x480.png/0055ff?text=cats+dignissimos',4,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(17,'https://via.placeholder.com/640x480.png/00aaee?text=cats+rerum',5,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(18,'https://via.placeholder.com/640x480.png/00cc44?text=cats+et',5,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(19,'https://via.placeholder.com/640x480.png/00ccdd?text=cats+in',5,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(20,'https://via.placeholder.com/640x480.png/00ee11?text=cats+quas',5,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(21,'https://via.placeholder.com/640x480.png/003322?text=cats+ut',6,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(22,'https://via.placeholder.com/640x480.png/003388?text=cats+iure',6,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(23,'https://via.placeholder.com/640x480.png/003300?text=cats+molestiae',6,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(24,'https://via.placeholder.com/640x480.png/0066ff?text=cats+magni',6,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(25,'https://via.placeholder.com/640x480.png/007788?text=cats+voluptatem',7,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(26,'https://via.placeholder.com/640x480.png/00aadd?text=cats+mollitia',7,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(27,'https://via.placeholder.com/640x480.png/004433?text=cats+laborum',7,'2021-01-20 17:20:59','2021-01-20 17:20:59'),(28,'https://via.placeholder.com/640x480.png/001155?text=cats+repellendus',7,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(29,'https://via.placeholder.com/640x480.png/0088aa?text=cats+tempore',8,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(30,'https://via.placeholder.com/640x480.png/008800?text=cats+nulla',8,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(31,'https://via.placeholder.com/640x480.png/00bb88?text=cats+voluptas',8,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(32,'https://via.placeholder.com/640x480.png/00cc33?text=cats+provident',8,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(33,'https://via.placeholder.com/640x480.png/009900?text=cats+veritatis',9,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(34,'https://via.placeholder.com/640x480.png/00bb55?text=cats+aut',9,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(35,'https://via.placeholder.com/640x480.png/0099bb?text=cats+ut',9,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(36,'https://via.placeholder.com/640x480.png/009933?text=cats+odio',9,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(37,'https://via.placeholder.com/640x480.png/00ddee?text=cats+fugit',10,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(38,'https://via.placeholder.com/640x480.png/00ff66?text=cats+molestias',10,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(39,'https://via.placeholder.com/640x480.png/00cc66?text=cats+ut',10,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(40,'https://via.placeholder.com/640x480.png/00ee77?text=cats+quae',10,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(41,'https://via.placeholder.com/640x480.png/0000ff?text=cats+architecto',11,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(42,'https://via.placeholder.com/640x480.png/003344?text=cats+consequatur',11,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(43,'https://via.placeholder.com/640x480.png/0022ff?text=cats+asperiores',11,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(44,'https://via.placeholder.com/640x480.png/00ccdd?text=cats+quis',11,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(45,'https://via.placeholder.com/640x480.png/00ffaa?text=cats+maxime',12,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(46,'https://via.placeholder.com/640x480.png/00ff44?text=cats+sed',12,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(47,'https://via.placeholder.com/640x480.png/00bb44?text=cats+neque',12,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(48,'https://via.placeholder.com/640x480.png/00ffcc?text=cats+nihil',12,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(49,'https://via.placeholder.com/640x480.png/00cc55?text=cats+ipsam',13,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(50,'https://via.placeholder.com/640x480.png/00dd88?text=cats+et',13,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(51,'https://via.placeholder.com/640x480.png/005555?text=cats+debitis',13,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(52,'https://via.placeholder.com/640x480.png/00bbcc?text=cats+culpa',13,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(53,'https://via.placeholder.com/640x480.png/003399?text=cats+aut',14,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(54,'https://via.placeholder.com/640x480.png/0088dd?text=cats+accusantium',14,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(55,'https://via.placeholder.com/640x480.png/00cc77?text=cats+animi',14,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(56,'https://via.placeholder.com/640x480.png/002222?text=cats+vero',14,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(57,'https://via.placeholder.com/640x480.png/0088ff?text=cats+repudiandae',15,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(58,'https://via.placeholder.com/640x480.png/000088?text=cats+ea',15,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(59,'https://via.placeholder.com/640x480.png/00eecc?text=cats+consequatur',15,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(60,'https://via.placeholder.com/640x480.png/000066?text=cats+quod',15,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(61,'https://via.placeholder.com/640x480.png/007722?text=cats+deleniti',16,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(62,'https://via.placeholder.com/640x480.png/0088cc?text=cats+aut',16,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(63,'https://via.placeholder.com/640x480.png/00ffcc?text=cats+sit',16,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(64,'https://via.placeholder.com/640x480.png/007722?text=cats+debitis',16,'2021-01-20 17:21:00','2021-01-20 17:21:00'),(65,'https://via.placeholder.com/640x480.png/005588?text=cats+deleniti',17,'2021-01-20 17:21:01','2021-01-20 17:21:01'),(66,'https://via.placeholder.com/640x480.png/00ddbb?text=cats+voluptatum',17,'2021-01-20 17:21:01','2021-01-20 17:21:01'),(67,'https://via.placeholder.com/640x480.png/005566?text=cats+ut',17,'2021-01-20 17:21:01','2021-01-20 17:21:01'),(68,'https://via.placeholder.com/640x480.png/009955?text=cats+fuga',17,'2021-01-20 17:21:01','2021-01-20 17:21:01'),(69,'https://via.placeholder.com/640x480.png/00ee11?text=cats+aut',18,'2021-01-20 17:21:01','2021-01-20 17:21:01'),(70,'https://via.placeholder.com/640x480.png/002266?text=cats+vero',18,'2021-01-20 17:21:01','2021-01-20 17:21:01'),(71,'https://via.placeholder.com/640x480.png/007755?text=cats+et',18,'2021-01-20 17:21:01','2021-01-20 17:21:01'),(72,'https://via.placeholder.com/640x480.png/0055ee?text=cats+molestiae',18,'2021-01-20 17:21:01','2021-01-20 17:21:01'),(73,'https://via.placeholder.com/640x480.png/00ccaa?text=cats+et',19,'2021-01-20 17:21:01','2021-01-20 17:21:01'),(74,'https://via.placeholder.com/640x480.png/007777?text=cats+id',19,'2021-01-20 17:21:01','2021-01-20 17:21:01'),(75,'https://via.placeholder.com/640x480.png/00ee22?text=cats+aut',19,'2021-01-20 17:21:01','2021-01-20 17:21:01'),(76,'https://via.placeholder.com/640x480.png/002299?text=cats+ullam',19,'2021-01-20 17:21:01','2021-01-20 17:21:01'),(77,'https://via.placeholder.com/640x480.png/00dd99?text=cats+ut',20,'2021-01-20 17:21:01','2021-01-20 17:21:01'),(78,'https://via.placeholder.com/640x480.png/001177?text=cats+dolore',20,'2021-01-20 17:21:01','2021-01-20 17:21:01'),(79,'https://via.placeholder.com/640x480.png/00ee00?text=cats+eum',20,'2021-01-20 17:21:01','2021-01-20 17:21:01'),(80,'https://via.placeholder.com/640x480.png/00ee77?text=cats+commodi',20,'2021-01-20 17:21:01','2021-01-20 17:21:01');
+INSERT INTO `options` VALUES (1,'https://via.placeholder.com/640x480.png/002233?text=cats+repellat',1,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(2,'https://via.placeholder.com/640x480.png/008877?text=cats+pariatur',1,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(3,'https://via.placeholder.com/640x480.png/002200?text=cats+sunt',1,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(4,'https://via.placeholder.com/640x480.png/003366?text=cats+nemo',1,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(5,'https://via.placeholder.com/640x480.png/00ff11?text=cats+hic',2,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(6,'https://via.placeholder.com/640x480.png/0055cc?text=cats+repellendus',2,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(7,'https://via.placeholder.com/640x480.png/007744?text=cats+qui',2,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(8,'https://via.placeholder.com/640x480.png/00dd77?text=cats+iure',2,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(9,'https://via.placeholder.com/640x480.png/00dd55?text=cats+delectus',3,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(10,'https://via.placeholder.com/640x480.png/001188?text=cats+voluptates',3,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(11,'https://via.placeholder.com/640x480.png/001155?text=cats+sunt',3,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(12,'https://via.placeholder.com/640x480.png/0044bb?text=cats+mollitia',3,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(13,'https://via.placeholder.com/640x480.png/0033ee?text=cats+velit',4,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(14,'https://via.placeholder.com/640x480.png/0000bb?text=cats+libero',4,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(15,'https://via.placeholder.com/640x480.png/00ee22?text=cats+dicta',4,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(16,'https://via.placeholder.com/640x480.png/00ff88?text=cats+quis',4,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(17,'https://via.placeholder.com/640x480.png/00aa99?text=cats+dolor',5,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(18,'https://via.placeholder.com/640x480.png/004444?text=cats+voluptas',5,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(19,'https://via.placeholder.com/640x480.png/0033ee?text=cats+itaque',5,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(20,'https://via.placeholder.com/640x480.png/009911?text=cats+omnis',5,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(21,'https://via.placeholder.com/640x480.png/00cc55?text=cats+maxime',6,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(22,'https://via.placeholder.com/640x480.png/0066ee?text=cats+delectus',6,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(23,'https://via.placeholder.com/640x480.png/007788?text=cats+alias',6,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(24,'https://via.placeholder.com/640x480.png/0044ee?text=cats+quisquam',6,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(25,'https://via.placeholder.com/640x480.png/00dd22?text=cats+reiciendis',7,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(26,'https://via.placeholder.com/640x480.png/003377?text=cats+pariatur',7,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(27,'https://via.placeholder.com/640x480.png/0055dd?text=cats+qui',7,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(28,'https://via.placeholder.com/640x480.png/00bb66?text=cats+non',7,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(29,'https://via.placeholder.com/640x480.png/002211?text=cats+nihil',8,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(30,'https://via.placeholder.com/640x480.png/00bb33?text=cats+sed',8,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(31,'https://via.placeholder.com/640x480.png/002288?text=cats+dolorem',8,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(32,'https://via.placeholder.com/640x480.png/0033cc?text=cats+animi',8,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(33,'https://via.placeholder.com/640x480.png/0088ff?text=cats+rerum',9,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(34,'https://via.placeholder.com/640x480.png/008866?text=cats+odit',9,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(35,'https://via.placeholder.com/640x480.png/0033aa?text=cats+ut',9,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(36,'https://via.placeholder.com/640x480.png/005511?text=cats+velit',9,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(37,'https://via.placeholder.com/640x480.png/009977?text=cats+ratione',10,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(38,'https://via.placeholder.com/640x480.png/00ff77?text=cats+necessitatibus',10,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(39,'https://via.placeholder.com/640x480.png/0011dd?text=cats+voluptate',10,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(40,'https://via.placeholder.com/640x480.png/00cc66?text=cats+nihil',10,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(41,'https://via.placeholder.com/640x480.png/00cc55?text=cats+blanditiis',11,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(42,'https://via.placeholder.com/640x480.png/0044dd?text=cats+dolorem',11,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(43,'https://via.placeholder.com/640x480.png/003388?text=cats+sit',11,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(44,'https://via.placeholder.com/640x480.png/000055?text=cats+molestiae',11,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(45,'https://via.placeholder.com/640x480.png/0011bb?text=cats+non',12,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(46,'https://via.placeholder.com/640x480.png/00ff33?text=cats+ipsam',12,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(47,'https://via.placeholder.com/640x480.png/0011aa?text=cats+doloribus',12,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(48,'https://via.placeholder.com/640x480.png/007755?text=cats+repellat',12,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(49,'https://via.placeholder.com/640x480.png/0044bb?text=cats+doloremque',13,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(50,'https://via.placeholder.com/640x480.png/00cc77?text=cats+ut',13,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(51,'https://via.placeholder.com/640x480.png/0011dd?text=cats+sed',13,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(52,'https://via.placeholder.com/640x480.png/0066cc?text=cats+ipsa',13,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(53,'https://via.placeholder.com/640x480.png/006622?text=cats+vero',14,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(54,'https://via.placeholder.com/640x480.png/00aacc?text=cats+et',14,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(55,'https://via.placeholder.com/640x480.png/008899?text=cats+est',14,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(56,'https://via.placeholder.com/640x480.png/000077?text=cats+facilis',14,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(57,'https://via.placeholder.com/640x480.png/00ccaa?text=cats+eius',15,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(58,'https://via.placeholder.com/640x480.png/005511?text=cats+quidem',15,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(59,'https://via.placeholder.com/640x480.png/00ff99?text=cats+eveniet',15,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(60,'https://via.placeholder.com/640x480.png/0055bb?text=cats+repudiandae',15,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(61,'https://via.placeholder.com/640x480.png/0099bb?text=cats+aut',16,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(62,'https://via.placeholder.com/640x480.png/001199?text=cats+temporibus',16,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(63,'https://via.placeholder.com/640x480.png/0088cc?text=cats+sunt',16,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(64,'https://via.placeholder.com/640x480.png/00bbbb?text=cats+nostrum',16,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(65,'https://via.placeholder.com/640x480.png/00ff66?text=cats+quibusdam',17,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(66,'https://via.placeholder.com/640x480.png/009900?text=cats+rerum',17,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(67,'https://via.placeholder.com/640x480.png/00bb44?text=cats+excepturi',17,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(68,'https://via.placeholder.com/640x480.png/005555?text=cats+vitae',17,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(69,'https://via.placeholder.com/640x480.png/00aa11?text=cats+velit',18,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(70,'https://via.placeholder.com/640x480.png/008888?text=cats+laudantium',18,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(71,'https://via.placeholder.com/640x480.png/00cc99?text=cats+est',18,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(72,'https://via.placeholder.com/640x480.png/00dd66?text=cats+qui',18,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(73,'https://via.placeholder.com/640x480.png/0033aa?text=cats+expedita',19,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(74,'https://via.placeholder.com/640x480.png/002211?text=cats+reiciendis',19,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(75,'https://via.placeholder.com/640x480.png/000022?text=cats+neque',19,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(76,'https://via.placeholder.com/640x480.png/00ff77?text=cats+ut',19,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(77,'https://via.placeholder.com/640x480.png/00dd44?text=cats+in',20,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(78,'https://via.placeholder.com/640x480.png/005522?text=cats+nemo',20,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(79,'https://via.placeholder.com/640x480.png/00bbff?text=cats+velit',20,'2021-01-23 10:26:29','2021-01-23 10:26:29'),(80,'https://via.placeholder.com/640x480.png/0000dd?text=cats+et',20,'2021-01-23 10:26:29','2021-01-23 10:26:29');
 /*!40000 ALTER TABLE `options` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,10 +192,10 @@ DROP TABLE IF EXISTS `questions`;
 CREATE TABLE `questions` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `answer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `in_polish` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `in_english` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `quiz_id` bigint unsigned NOT NULL,
   `is_correct` tinyint(1) NOT NULL,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -210,7 +210,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,'debitis','quia',1,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(2,'tenetur','voluptas',1,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(3,'voluptatibus','nihil',1,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(4,'voluptatem','voluptates',1,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(5,'deserunt','odit',1,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(6,'aut','molestiae',2,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(7,'tempore','autem',2,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(8,'quod','mollitia',2,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(9,'velit','ex',2,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(10,'sed','et',2,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(11,'consequuntur','quas',3,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(12,'voluptatibus','odio',3,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(13,'perspiciatis','perspiciatis',3,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(14,'cupiditate','est',3,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(15,'officia','et',3,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(16,'explicabo','aspernatur',4,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(17,'inventore','ea',4,1,'words','2021-01-20 17:20:58','2021-01-20 17:20:58'),(18,'labore','quam',4,1,'words','2021-01-20 17:20:59','2021-01-20 17:20:59'),(19,'iste','reprehenderit',4,1,'words','2021-01-20 17:20:59','2021-01-20 17:20:59'),(20,'voluptatibus','sapiente',4,1,'words','2021-01-20 17:20:59','2021-01-20 17:20:59');
+INSERT INTO `questions` VALUES (1,'quod','facere',1,1,5,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(2,'doloribus','et',1,1,3,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(3,'veritatis','et',1,1,3,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(4,'est','qui',1,1,4,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(5,'optio','voluptas',1,1,1,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(6,'aliquam','enim',2,1,1,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(7,'ipsum','voluptatem',2,1,4,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(8,'excepturi','magni',2,1,4,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(9,'nihil','facere',2,1,1,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(10,'alias','earum',2,1,1,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(11,'aut','sunt',3,1,1,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(12,'quo','dolor',3,1,3,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(13,'voluptatem','porro',3,1,5,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(14,'quae','vel',3,1,1,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(15,'dicta','vel',3,1,1,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(16,'quia','et',4,1,1,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(17,'qui','dolor',4,1,2,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(18,'veritatis','repudiandae',4,1,2,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(19,'necessitatibus','est',4,1,4,'2021-01-23 10:26:28','2021-01-23 10:26:28'),(20,'aut','dolor',4,1,3,'2021-01-23 10:26:28','2021-01-23 10:26:28');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -241,8 +241,74 @@ CREATE TABLE `quizzes` (
 
 LOCK TABLES `quizzes` WRITE;
 /*!40000 ALTER TABLE `quizzes` DISABLE KEYS */;
-INSERT INTO `quizzes` VALUES (1,1,'2021-01-20 17:20:58','2021-01-20 17:20:58',1),(2,1,'2021-01-20 17:20:58','2021-01-20 17:20:58',1),(3,1,'2021-01-20 17:20:58','2021-01-20 17:20:58',2),(4,1,'2021-01-20 17:20:58','2021-01-20 17:20:58',2);
+INSERT INTO `quizzes` VALUES (1,1,'2021-01-23 10:26:27','2021-01-23 10:26:27',1),(2,1,'2021-01-23 10:26:27','2021-01-23 10:26:27',1),(3,2,'2021-01-23 10:26:28','2021-01-23 10:26:28',2),(4,2,'2021-01-23 10:26:28','2021-01-23 10:26:28',2);
 /*!40000 ALTER TABLE `quizzes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `results`
+--
+
+DROP TABLE IF EXISTS `results`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `results` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `quiz_id` bigint unsigned NOT NULL,
+  `user_id` bigint unsigned NOT NULL,
+  `points_gained` int NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `results_quiz_id_foreign` (`quiz_id`),
+  KEY `results_user_id_foreign` (`user_id`),
+  CONSTRAINT `results_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `results_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `results`
+--
+
+LOCK TABLES `results` WRITE;
+/*!40000 ALTER TABLE `results` DISABLE KEYS */;
+INSERT INTO `results` VALUES (1,4,1,2,NULL,NULL);
+/*!40000 ALTER TABLE `results` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `solutions`
+--
+
+DROP TABLE IF EXISTS `solutions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `solutions` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint unsigned NOT NULL,
+  `question_id` bigint unsigned NOT NULL,
+  `answer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `quiz_id` bigint unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `solutions_question_id_foreign` (`question_id`),
+  KEY `solutions_user_id_foreign` (`user_id`),
+  KEY `solutions_quiz_id_foreign` (`quiz_id`),
+  CONSTRAINT `solutions_question_id_foreign` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `solutions_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `solutions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `solutions`
+--
+
+LOCK TABLES `solutions` WRITE;
+/*!40000 ALTER TABLE `solutions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `solutions` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -263,7 +329,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,7 +338,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$itSHzAL4s.xrt7GWSLXSKO27FXe3OaLde8v34lHzkUVebh5PKhAZ6',NULL,NULL,NULL),(2,'Mr. Casimer Sipes PhD','boyle.ella@example.net','2021-01-20 17:20:58','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','FMvyOALxMH','2021-01-20 17:20:58','2021-01-20 17:20:58'),(3,'Alverta Beer I','tbahringer@example.org','2021-01-20 17:20:58','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','ibcD9lGW1Z','2021-01-20 17:20:58','2021-01-20 17:20:58'),(4,'Angelina Mraz','brock44@example.com','2021-01-20 17:20:58','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','uNPAaDiXc4','2021-01-20 17:20:58','2021-01-20 17:20:58'),(5,'Ena McDermott','jgusikowski@example.net','2021-01-20 17:20:58','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','RJvshxvBiV','2021-01-20 17:20:58','2021-01-20 17:20:58');
+INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$hUJCxiQ.fCMZj9YOEIrQ8.CG4Y08.2Nw6jJOATr4oBEVnIRPcJiOG',NULL,NULL,NULL),(2,'Alfons','alfons@gmail.com',NULL,'$2y$10$nQrTKlukNmSOflyheXxm8ORkCR49oyGfHPEaLaYcaeWBOiqnhxZdK',NULL,NULL,NULL),(3,'Creola Jaskolski','cdonnelly@example.com','2021-01-23 10:26:27','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','6Dujy342QM','2021-01-23 10:26:27','2021-01-23 10:26:27'),(4,'Elenor Hirthe','kaitlyn91@example.org','2021-01-23 10:26:27','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','qhSkWBpWxf','2021-01-23 10:26:27','2021-01-23 10:26:27'),(5,'Lorenza Luettgen','frankie.sipes@example.com','2021-01-23 10:26:27','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','WhoHgw7Zno','2021-01-23 10:26:27','2021-01-23 10:26:27'),(6,'Willis Daniel','kristian61@example.com','2021-01-23 10:26:27','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','bfbaFDedbC','2021-01-23 10:26:27','2021-01-23 10:26:27');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -285,4 +351,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-20 17:21:02
+-- Dump completed on 2021-01-23 10:26:33

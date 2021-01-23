@@ -16,6 +16,7 @@ class QuizCommentController extends Controller
      */
     public function index(Quiz $quiz)
     {
+        $comments=Comment::where('quiz_id',$quiz->id)->get();
         return view('quizzescomments.index')->withComments($quiz->comment)->withQuiz($quiz);
     }
 

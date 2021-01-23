@@ -1,49 +1,97 @@
-<x-guest-layout>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-        <div>
-            Comments
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Discussion') }}
+        </h2>
+    </x-slot>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="flex flex-col">
+                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Title
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Text
+                                        </th>
+                                        <th scope="col" class="relative px-6 py-3">
+                                            <span class="sr-only">Solve</span>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        @foreach($comments as $comment)
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="flex items-center">
+                                                    <div class="ml-4">
+                                                        <div class="text-sm font-medium text-gray-900">
+                                                            {{$comment->title}}
+                                                        </div>
+                                                        <div class="text-sm text-gray-500">
+                                                            {{json_decode(\App\Models\User::select('email')->where('id',$comment->user_id)->first(),true)['email']}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-wrap">
+                                                <div class="text-sm text-gray-500">{{$comment->text}}</div>
+                                            </td>
+                                            @if($comment->user_id==\Illuminate\Support\Facades\Auth::id())
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <form method="get" action="{{ route('quizzes.comments.edit',  ['quiz'=>$quiz, 'comment'=>$comment]) }}">
+                                                        <x-button class="ml-4">
+                                                            {{ __('Edit') }}
+                                                        </x-button>
+                                                    </form>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <form method="post" action="{{ route('quizzes.comments.destroy',  ['quiz'=>$quiz, 'comment'=>$comment]) }}">
+                                                        @csrf
+                                                        @method("DELETE")
+                                                        <x-button class="ml-4">
+                                                            {{ __('Delete') }}
+                                                        </x-button>
+                                                </td>
+                                            @endif
+                                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            </td>
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                    </form>
+                                </tab
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <tbody class="bg-white divide-y divide-gray-200">
-            @foreach ($comments as $comment)
-                <tr>
-                    <td>
-                    <h1><strong>{{$comment->title}} {{json_decode(\App\Models\User::select('email')->where('id',$comment->user_id)->first(),true)['email']}}</strong></h1>
-                    </td>
-                    <br>
-                    <br>
-                    <td>{{$comment->text}}</td>
-                    @if($comment->user_id==\Illuminate\Support\Facades\Auth::id())
-                        <td>
-                    <form method="post" action="{{ route('quizzes.comments.destroy',  ['quiz'=>$quiz, 'comment'=>$comment]) }}">
-                        @csrf
-                        @method("DELETE")
-                        <x-button class="ml-4">
-                            {{ __('Delete') }}
-                        </x-button>
-                    </form>
-
-                        </td>
-                        <br>
-                        <br>
-                        <td>
-                            <form method="get" action="{{ route('quizzes.comments.edit',  ['quiz'=>$quiz, 'comment'=>$comment]) }}">
-                                <x-button class="ml-4">
-                                    {{ __('Edit') }}
-                                </x-button>
-                            </form>
-
-                        </td>
-                        <br>
-                        <br>
-                    @endif
-                </tr>
-            @endforeach
-        </tbody>
-        <form method="get" action="{{ route('quizzes.comments.create',$quiz) }}">
-            <x-button class="ml-4">
-                {{ __('Add new comment') }}
-            </x-button>
-        </form>
     </div>
-</x-guest-layout>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="items-center mt-4 px-4 pb-5">
+            <div class="flex items-center justify-center max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <form method="get" action="{{ route('quizzes.comments.create',$quiz) }}">
+
+                            <x-button class="ml-4">
+
+                                      {{ __('Add new comments') }}
+
+                                 </x-button>
+
+                         </form>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+    </div>
+</x-app-layout>
+
+
