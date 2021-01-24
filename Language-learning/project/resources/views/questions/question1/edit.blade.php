@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Question <type> creator') }}
+            {{ __('Question Editor') }}
         </h2>
     </x-slot>
         <div class="py-12">
@@ -19,7 +19,7 @@
                             </div>
 
                             <div class="mt-4">
-                                <x-label for="answer" :value="__('Answer in <language>')" />
+                                <x-label for="answer" :value="__('Answer in English')" />
                                 <x-input id="answer" class="block mt-1 w-full" type="text" name="answer" :value="$question->answer" />
                             </div>
 

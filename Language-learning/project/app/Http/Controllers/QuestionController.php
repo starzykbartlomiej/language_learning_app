@@ -143,14 +143,22 @@ class QuestionController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function edit($quiz, $question)
+    public function edit(Quiz $quiz,Question $question)
     {
-        $question = Question::query()->where('id', $question)->first();
-        $quizes = Quiz::query()->where('id', $quiz)->first();
+        /*$question = Question::query()->where('id', $question)->first();
+        $quizes = Quiz::query()->where('id', $quiz)->first();*/
         switch($question->type) {
             case "1":
             {
-                return view('questions.question1.edit')->withQuiz($quizes)->withQuestion($question);
+                return view('questions.question1.edit')->withQuiz($quiz)->withQuestion($question);
+            }
+            case "2":
+            {
+                return view('questions.question2.edit')->withQuiz($quiz)->withQuestion($question);
+            }
+            case "3":
+            {
+                return view('questions.question3.edit')->withQuiz($quiz)->withQuestion($question);
             }
             default:
             {
@@ -168,10 +176,22 @@ class QuestionController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $quiz, $question)
+    public function update(Request $request,Quiz $quiz,Question $question)
     {
-        Question::query()->where('id', $question)->update(['answer' => $request->answer, 'in_english'=>$request->in_english]);
-        $quiz = Quiz::query()->where('id', $quiz)->first();
+        Question::query()->where('id', $question->id)
+            ->update(['answer' => $request->answer, 'in_english' => $request->in_english]);
+        $quiz = Quiz::query()->where('id', $quiz->id)->first();
+
+        if($question->type == "3")
+        {
+            $options = Option::query()->where('question_id', $question->id)->get();
+            foreach($options as $option)
+            {
+                $newbie[] = $option;
+            }
+            return dd($newbie);
+        }
+
         return view('quizzes.details')->withQuiz($quiz);
     }
 

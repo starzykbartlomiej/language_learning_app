@@ -18,7 +18,7 @@
                             </div>
 
                             <div class="mt-4">
-                                <x-label for="answer" :value="'Answer in ' . ucfirst($quiz->get_language($quiz->language_id))" />
+                                <x-label for="answer" :value="__('Answer in English')" />
                                 <x-input id="answer" class="block mt-1 w-full" type="text" name="answer" :value="old('answer')" />
                             </div>
 
