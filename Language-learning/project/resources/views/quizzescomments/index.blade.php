@@ -62,9 +62,9 @@
                                                     <form method="post" action="{{ route('quizzes.comments.destroy',  ['quiz'=>$quiz, 'comment'=>$comment]) }}">
                                                         @csrf
                                                         @method("DELETE")
-                                                        <x-button class="ml-4">
+                                                        <x-button-delete class="ml-4">
                                                             {{ __('Delete') }}
-                                                        </x-button>
+                                                        </x-button-delete>
                                                     </form>
                                                 </td>
                                             @endif

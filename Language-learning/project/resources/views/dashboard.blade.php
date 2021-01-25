@@ -102,9 +102,9 @@
                                                     <form method="post" action="{{ route('quizzes.destroy', $quiz) }}">
                                                         @method('Delete')
                                                         @csrf
-                                                        <x-button class="ml-4">
+                                                        <x-button-delete class="ml-4">
                                                             {{ __('Delete') }}
-                                                        </x-button>
+                                                        </x-button-delete>
                                                     </form>
                                                 </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

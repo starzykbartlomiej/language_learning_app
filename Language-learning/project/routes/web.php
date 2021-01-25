@@ -25,7 +25,7 @@ Route::resource('dashboard', App\Http\Controllers\Dashboard::class)->middleware(
 Route::resource('quizzes.comments', App\Http\Controllers\QuizCommentController::class)->middleware('auth');
 Route::resource('quizzes.questions', App\Http\Controllers\QuestionController::class)->middleware('auth');
 Route::resource('quizzes.solutions', App\Http\Controllers\SolutionController::class)->middleware('auth');
-Route::resource('comments.subcomments',\App\Http\Controllers\CommentSubcommentController::class)->middleware('auth');
+Route::resource('quizzes.comments.subcomments',\App\Http\Controllers\CommentSubcommentController::class)->middleware('auth');
 Route::resource('admin',\App\Http\Controllers\Admin::class)->middleware('auth');
 Route::resource('expert',\App\Http\Controllers\Expert::class)->middleware('auth');
 //Route::redirect('quizzes.questions.index2', 'App\Http\Controllers\QuizController@index2')->middleware('auth');
