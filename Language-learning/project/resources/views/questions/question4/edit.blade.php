@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Question Editor') }}
+            {{ __('Multiple image choice question creator') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -9,31 +9,36 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
-                    <form method="post" action="{{ route('quizzes.questions.update', ['quiz'=>$quiz->id, 'question'=>$question->id], $quiz, $question )}}">
+                    <form method="post" action="{{ route('quizzes.questions.update', ['quiz'=>$quiz->id, 'question'=>$question->id], $quiz, $question )}}" enctype="multipart/form-data">
                         @csrf
                         @method('patch')
                         <div>
                             <x-label for="in_english" :value="'Task content in ' . ucfirst($quiz->get_language($quiz->language_id))" />
                             <x-input id="in_english" class="block mt-1 w-full" type="text" name="in_english"
-                                     :value="$question->in_english" autofocus />
+                                     :value="$question->answer" autofocus />
                         </div>
-
-                        <div class="mt-4">
-                            <x-label for="answerA" :value="'answer A'" />
-                            <x-input id="answerA" class="block mt-1 w-full" type="text" name="answerA" :value="$options[0]" />
-                        </div>
-                        <div class="mt-4">
-                            <x-label for="answerB" :value="'answer B'" />
-                            <x-input id="answerB" class="block mt-1 w-full" type="text" name="answerB" :value="$options[1]" />
-                        </div>
-                        <div class="mt-4">
-                            <x-label for="answerC" :value="'answer C'" />
-                            <x-input id="answerC" class="block mt-1 w-full" type="text" name="answerC" :value="$options[2]" />
-                        </div>
-                        <div class="mt-4">
-                            <x-label for="answerD" :value="'answer D'" />
-                            <x-input id="answerD" class="block mt-1 w-full" type="text" name="answerD" :value="$options[3]" />
-                        </div>
+                            <div class="container items-center">
+                                <img class="items-center" src= {{URL::asset(($options[0]))}}
+                                    alt="{{$question->option[0]->id}}" style="height:100px">
+                                <x-upload id="Answer A">
+                                    <x-slot name="label"> Upload file to A answer</x-slot>
+                                </x-upload>
+                                <img src= {{URL::asset(($options[1]))}}
+                                    alt="{{$question->option[1]->id}}" style="height:100px">
+                                <x-upload id="Answer B">
+                                    <x-slot name="label"> Upload file to B answer</x-slot>
+                                </x-upload>
+                                <img src= {{URL::asset(($options[2]))}}
+                                    alt="{{$question->option[2]->id}}" style="height:100px">
+                                <x-upload id="Answer C">
+                                    <x-slot name="label"> Upload file to C answer</x-slot>
+                                </x-upload>
+                                <img src= {{URL::asset(($options[3]))}}
+                                    alt="{{$question->option[3]->id}}" style="height:100px">
+                                <x-upload id="Answer D">
+                                    <x-slot name="label"> Upload file to D answer</x-slot>
+                                </x-upload>
+                            </div>
 
                         <div class="mt-4">
                             <x-label for="answer" :value="'Correct answer'" />
@@ -75,11 +80,11 @@
                             @endif
                         </div>
 
-                        <x-input id="type" class="block mt-1 w-full" type="hidden" name="type" :value=3 />
+                        <x-input id="type" class="block mt-1 w-full" type="hidden" name="type" :value=4 />
 
                         <div class="flex items-center justify-end mt-4">
                             <x-button class="ml-4">
-                                {{ __('Save changes...') }}
+                                {{ __('Save changes') }}
                             </x-button>
                         </div>
                     </form>

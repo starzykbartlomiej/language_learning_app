@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Option;
 use App\Models\Question;
 use App\Models\Quiz;
-use File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Storage;
 
 class QuestionController extends Controller
@@ -158,7 +157,15 @@ class QuestionController extends Controller
             }
             case "3":
             {
-                return view('questions.question3.edit')->withQuiz($quiz)->withQuestion($question);
+                $options = Option::query()->where('question_id', $question->id)->pluck('data');
+                //dd($options);
+                return view('questions.question3.edit')->withQuiz($quiz)->withQuestion($question)->withOptions($options);
+            }
+            case "4":
+            {
+                $options = Option::query()->where('question_id', $question->id)->pluck('data');
+                //dd($options);
+                return view('questions.question4.edit')->withQuiz($quiz)->withQuestion($question)->withOptions($options);
             }
             default:
             {
@@ -184,14 +191,31 @@ class QuestionController extends Controller
 
         if($question->type == "3")
         {
+            $letter = 'A';
             $options = Option::query()->where('question_id', $question->id)->get();
             foreach($options as $option)
             {
-                $newbie[] = $option;
+                $var = "answer".$letter++;
+                $option->data = $request->$var;
+                $option->save();
             }
-            return dd($newbie);
         }
-
+        if($question->type == 4)
+        {
+            $letter = 'A';
+            $options = Option::query()->where('question_id', $question->id)->get();
+            foreach($options as $option)
+            {
+                File::delete($option->data);
+                $var = "Answer_".$letter++;
+                $image = $request->file($var);
+                $new_name = rand() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('images'), $new_name );
+                $option->data = "images/" . $new_name;
+                $option->question_id = $question->id;
+                $option->save();
+            }
+        }
         return view('quizzes.details')->withQuiz($quiz);
     }
 
