@@ -257,12 +257,6 @@ class QuestionController extends Controller
             $options = Option::query()->where('question_id', $question->id)->get();
             foreach($options as $option)
             {
-                $request->validate([
-                    'Answer_A'=>'required',
-                    'Answer_B'=>'required',
-                    'Answer_C'=>'required',
-                    'Answer_D'=>'required'
-                ]);
                 $var = "Answer_".$letter++;
                 if(isset($request->$var)) {
                     File::delete($option->data);
