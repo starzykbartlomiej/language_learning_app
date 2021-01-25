@@ -15,7 +15,7 @@
                         <div>
                             <x-label for="in_english" :value="'Task content in ' . ucfirst($quiz->get_language($quiz->language_id))" />
                             <x-input id="in_english" class="block mt-1 w-full" type="text" name="in_english"
-                                     :value="$question->answer" autofocus />
+                                     :value="$question->in_english" autofocus />
                         </div>
                             <div class="container items-center">
                                 <img class="items-center" src= {{URL::asset(($options[0]))}}

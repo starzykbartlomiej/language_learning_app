@@ -206,14 +206,16 @@ class QuestionController extends Controller
             $options = Option::query()->where('question_id', $question->id)->get();
             foreach($options as $option)
             {
-                File::delete($option->data);
                 $var = "Answer_".$letter++;
-                $image = $request->file($var);
-                $new_name = rand() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('images'), $new_name );
-                $option->data = "images/" . $new_name;
-                $option->question_id = $question->id;
-                $option->save();
+                if(isset($request->$var)) {
+                    File::delete($option->data);
+                    $image = $request->file($var);
+                    $new_name = rand() . '.' . $image->getClientOriginalExtension();
+                    $image->move(public_path('images'), $new_name);
+                    $option->data = "images/" . $new_name;
+                    $option->question_id = $question->id;
+                    $option->save();
+                }
             }
         }
         return view('quizzes.details')->withQuiz($quiz);
