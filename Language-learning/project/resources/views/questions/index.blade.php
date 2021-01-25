@@ -22,6 +22,10 @@
                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Details
                         </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Delete
+                        </th>
                     </tr>
                     </thead>
 
@@ -34,8 +38,22 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     {{$question->names($question->type)}}
                                 </td>
-                                <td>
-
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <form method="get" action="{{ route('quizzes.questions.edit', ['quiz' => $quiz->id, 'question' => $question->id])}}">
+                                        @method('PATCH')
+                                        <x-button aclass="ml-4">
+                                            {{ __('Edit') }}
+                                        </x-button>
+                                    </form>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <form method="post" action="{{ route('quizzes.questions.destroy', ['quiz' => $quiz->id, 'question' => $question->id])}}">
+                                        @method('DELETE')
+                                        @csrf
+                                        <x-button aclass="ml-4">
+                                            {{ __('Delete') }}
+                                        </x-button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
@@ -61,12 +79,15 @@
                             {{ __('Add new question') }}
                         </x-button>
                     </form>
-
-                    <a href="{{ url('/quizzes') }}">
-                        <x-button class="ml-4">
+                    <div class="flex items-center justify-center mt-4 px-4 pb-5">
+{{--                    <a href="{{ url('/quizzes') }}">--}}
+                        <form method="get" action="{{ route('dashboard.index')}}">
+                        <x-button aclass="ml-4">
                             {{ __('Finish quiz creation') }}
                         </x-button>
-                    </a>
+                        </form>
+                    {{--</a>--}}
+                    </div>
                 </div>
             </div>
         </div>

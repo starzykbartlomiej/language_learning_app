@@ -70,4 +70,33 @@
             </div>
         </div>
     </div>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="flex items-center justify-center mt-4 px-4 pb-5">
+                <form method="get" action="{{ route('quizzes.questions.create', $quiz )}}">
+                    @csrf
+                    <label for="question_type">Question type: </label>
+                    <select class="form-control rounded-md" name="question_type" id="question_type">
+                        <option value = 1>{{ __('Word translation') }}</option>
+                        <option value = 2>{{ __('Sentence translation') }}</option>
+                        <option value = 3>{{ __('Multiple choice') }}</option>
+                        <option value = 4>{{ __('Multiple image choice') }}</option>
+                        <option value = 5>{{ __('Build sentece from blocks') }}</option>
+                    </select>
+                    <x-button class="ml-4">
+                        {{ __('Add new question') }}
+                    </x-button>
+                </form>
+                <div class="flex items-center justify-center mt-4 px-4 pb-5">
+                    {{--                    <a href="{{ url('/quizzes') }}">--}}
+                    <form method="get" action="{{ route('dashboard.index')}}">
+                        <x-button aclass="ml-4">
+                            {{ __('Finish') }}
+                        </x-button>
+                    </form>
+                    {{--</a>--}}
+                </div>
+            </div>
+        </div>
+    </div>
 </x-app-layout>
