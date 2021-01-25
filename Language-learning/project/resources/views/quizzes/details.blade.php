@@ -91,7 +91,7 @@
                     {{--                    <a href="{{ url('/quizzes') }}">--}}
                     <form method="get" action="{{ route('dashboard.index')}}">
                         <x-button aclass="ml-4">
-                            {{ __('Finish') }}
+                            {{ __('Finish quiz editing') }}
                         </x-button>
                     </form>
                     {{--</a>--}}

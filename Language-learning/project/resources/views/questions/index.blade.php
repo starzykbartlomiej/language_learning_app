@@ -40,7 +40,7 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <form method="get" action="{{ route('quizzes.questions.edit', ['quiz' => $quiz->id, 'question' => $question->id])}}">
-                                        @method('PATCH')
+                                        <input type="hidden" name="create_new" value="crete_new"/>
                                         <x-button aclass="ml-4">
                                             {{ __('Edit') }}
                                         </x-button>
@@ -50,6 +50,7 @@
                                     <form method="post" action="{{ route('quizzes.questions.destroy', ['quiz' => $quiz->id, 'question' => $question->id])}}">
                                         @method('DELETE')
                                         @csrf
+                                        <input type="hidden" name="create_new" value="crete_new"/>
                                         <x-button aclass="ml-4">
                                             {{ __('Delete') }}
                                         </x-button>

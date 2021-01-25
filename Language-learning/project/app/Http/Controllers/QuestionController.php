@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Option;
 use App\Models\Question;
 use App\Models\Quiz;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Storage;
@@ -155,39 +156,64 @@ class QuestionController extends Controller
      *
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request
      */
-    public function edit(Quiz $quiz,Question $question)
+    public function edit(Request $request, Quiz $quiz,Question $question)
     {
-        /*$question = Question::query()->where('id', $question)->first();
-        $quizes = Quiz::query()->where('id', $quiz)->first();*/
-        switch($question->type) {
-            case "1":
-            {
-                return view('questions.question1.edit')->withQuiz($quiz)->withQuestion($question);
+        if(isset($request->create_new))
+        {
+            switch ($question->type) {
+                case "1":
+                {
+                    return view('quizzes.question1.edit')->withQuiz($quiz)->withQuestion($question);
+                }
+                case "2":
+                {
+                    return view('quizzes.question2.edit')->withQuiz($quiz)->withQuestion($question);
+                }
+                case "3":
+                {
+                    $options = Option::query()->where('question_id', $question->id)->pluck('data');
+                    return view('quizzes.question3.edit')->withQuiz($quiz)->withQuestion($question)->withOptions($options);
+                }
+                case "4":
+                {
+                    $options = Option::query()->where('question_id', $question->id)->pluck('data');
+                    return view('quizzes.question4.edit')->withQuiz($quiz)->withQuestion($question)->withOptions($options);
+                }
+                default:
+                {
+                    return "No editing enabled yet";
+                }
             }
-            case "2":
-            {
-                return view('questions.question2.edit')->withQuiz($quiz)->withQuestion($question);
-            }
-            case "3":
-            {
-                $options = Option::query()->where('question_id', $question->id)->pluck('data');
-                //dd($options);
-                return view('questions.question3.edit')->withQuiz($quiz)->withQuestion($question)->withOptions($options);
-            }
-            case "4":
-            {
-                $options = Option::query()->where('question_id', $question->id)->pluck('data');
-                //dd($options);
-                return view('questions.question4.edit')->withQuiz($quiz)->withQuestion($question)->withOptions($options);
-            }
-            default:
-            {
-                return "No editing enabled yet";
+        } else {
+            switch ($question->type) {
+                case "1":
+                {
+                    return view('questions.question1.edit')->withQuiz($quiz)->withQuestion($question);
+                }
+                case "2":
+                {
+                    return view('questions.question2.edit')->withQuiz($quiz)->withQuestion($question);
+                }
+                case "3":
+                {
+                    $options = Option::query()->where('question_id', $question->id)->pluck('data');
+                    //dd($options);
+                    return view('questions.question3.edit')->withQuiz($quiz)->withQuestion($question)->withOptions($options);
+                }
+                case "4":
+                {
+                    $options = Option::query()->where('question_id', $question->id)->pluck('data');
+                    //dd($options);
+                    return view('questions.question4.edit')->withQuiz($quiz)->withQuestion($question)->withOptions($options);
+                }
+                default:
+                {
+                    return "No editing enabled yet";
+                }
             }
         }
-
-       // return view('questions.question1.edit')->withQuiz($question);
     }
 
     /**
@@ -199,7 +225,6 @@ class QuestionController extends Controller
      */
     public function update(Request $request,Quiz $quiz,Question $question)
     {
-
         $request->validate([
             'answer' => 'required',
             'in_english' => 'required',
@@ -250,6 +275,11 @@ class QuestionController extends Controller
                 }
             }
         }
+        if($request->create_new)
+        {
+            $questions = Question::all()->where('quiz_id', $quiz->id);
+            return view('questions.index')->withQuiz($quiz)->withQuestions($questions);
+        }
         return view('quizzes.details')->withQuiz($quiz);
     }
 
@@ -262,6 +292,11 @@ class QuestionController extends Controller
     public function destroy(Request $request, Quiz $quiz, Question $question)
     {
         $question->delete();
+        if(isset($request->create_new))
+        {
+            $questions = Question::all()->where('quiz_id', $quiz->id);
+            return view('questions.index')->withQuiz($quiz)->withQuestions($questions);
+        }
         return view('quizzes.details')->withQuiz($quiz);
     }
 }
