@@ -54,7 +54,10 @@ class QuestionController extends Controller
     public function store(Request $request, Quiz $quiz)
     {
         //TODO validation
-        // ...
+        $request->validate([
+            'answer' => 'required',
+            'in_english' => 'required',
+        ]);
 
         //TODO refactor
         $question = new Question();
@@ -185,6 +188,12 @@ class QuestionController extends Controller
      */
     public function update(Request $request,Quiz $quiz,Question $question)
     {
+
+        $request->validate([
+            'answer' => 'required',
+            'in_english' => 'required',
+        ]);
+
         Question::query()->where('id', $question->id)
             ->update(['answer' => $request->answer, 'in_english' => $request->in_english]);
         $quiz = Quiz::query()->where('id', $quiz->id)->first();
