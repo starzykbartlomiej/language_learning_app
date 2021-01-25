@@ -9,11 +9,22 @@
                                 <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
                             </a>
                         </div>
-                        <div class="hidden md:block">
-                            <div class="ml-10 flex items-baseline space-x-4">
+                        <div class="hidden md:flex">
+                            <div class="ml-10 flex items-baseline space-x-4" :active="{{request()->routeIs('quizzes.*')}}">
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                                <a href="{{route('quizzes.index')}}" active="{{request()->routeIs('quizzes.*')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Quizzes</a>
-                                <a href="{{route('dashboard.index')}}" active="{{request()->routeIs('dashboard')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                                <a href="{{route('quizzes.index')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Quizzes</a>
+                            </div>
+                            <div class="ml-10 flex items-baseline space-x-4" :active="{{request()->routeIs('dashboard')}}">
+                                <a href="{{route('dashboard.index')}}"  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                            </div>
+{{--                            @if()--}}
+                            {{dd()}}
+                            <div class="ml-10 flex items-baseline space-x-4" :active="{{request()->routeIs('admin.*')}}">
+                                <a href="{{route('admin.index')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Admin</a>
+                            </div>
+{{--                            @endif--}}
+                            <div class="ml-10 flex items-baseline space-x-4" :active="{{request()->routeIs('expert.*')}}">
+                                <a href="{{route('expert.index')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Expert</a>
                             </div>
                         </div>
                     </div>
