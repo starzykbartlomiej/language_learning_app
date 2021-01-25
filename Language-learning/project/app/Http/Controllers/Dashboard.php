@@ -16,7 +16,8 @@ class Dashboard extends Controller
     public function index()
     {
         $quizzes = Quiz::all()->where('user_id', Auth::id());
-        return view('dashboard')->withQuizzes($quizzes);
+        $results = Auth::user()->result;
+        return view('dashboard')->withQuizzes($quizzes)->withResults($results);
     }
 
     /**

@@ -28,7 +28,7 @@ class QuestionFactory extends Factory
             'quiz_id' => Quiz::factory(),
             'is_correct' => $this->faker->boolean,
             //TODO change to set of 5 values
-            'type' => rand(1,5)
+            'type' => rand(1,4)
         ];
     }
 }

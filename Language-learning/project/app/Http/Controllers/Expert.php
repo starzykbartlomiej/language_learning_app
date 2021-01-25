@@ -22,12 +22,18 @@ class Expert extends Controller
         {
             $language_id = $language->id;
             $quizzes = Quiz::all()->where('language_id', $language_id);
+            return view('expert.index')->withQuizzes($quizzes);
+        }
+        else if(Auth::user()->expert)
+        {
+            $quizzes = array();
+            return view('expert.index')->withQuizzes($quizzes);
         }
         else
         {
             return redirect('/quizzes');
         }
-        return view('expert.index')->withQuizzes($quizzes);
+
     }
 
     /**

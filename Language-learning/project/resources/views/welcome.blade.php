@@ -37,7 +37,7 @@
     </head>
     <body class="leading-normal tracking-normal text-gray-900" style="font-family: 'Source Sans Pro', sans-serif;">
 
-    <div class="h-screen pb-14 bg-right bg-cover");">
+    <div class="h-screen pb-14 bg-right bg-cover">
         <!--Nav-->
         <div class="w-full container mx-auto p-6">
 
@@ -49,8 +49,12 @@
                 <div class="flex w-1/2 justify-end content-center">
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
-                            <a href="{{ url('/quizzes') }}" class="text-sm text-gray-700 underline">Quizzes</a>
+                            <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">
+                                <x-button>Dashboard</x-button>
+                            </a>
+                            <a href="{{ url('/quizzes') }}" class="ml-4 text-sm text-gray-700 underline">
+                                <x-button>Quizzes</x-button>
+                            </a>
                         @else
                             <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">
                                 <x-button>Login</x-button>

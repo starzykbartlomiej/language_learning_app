@@ -15,9 +15,13 @@ class SolutionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Quiz $quiz)
     {
-        //
+        return view('solutions.index')->withQuiz($quiz)
+            ->withQuestions($quiz->question)
+            ->withKeys($keys)
+            ->withSolutions($quiz->solution)
+            ->withTotal($quiz->result->points_gained);
     }
 
     /**

@@ -25,6 +25,8 @@
                                         </th>
                                     </tr>
                                     </thead>
+                                    @if(empty($quizzes))
+                                    @else
                                     <tbody class="bg-white divide-y divide-gray-200">
                                     <tr>
                                         @foreach($quizzes as $quiz)
@@ -98,21 +100,11 @@
                                                     </x-button>
                                                 </form>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <form method="post" action="{{ route('quizzes.destroy', $quiz) }}">
-                                                    @method('Delete')
-                                                    @csrf
-                                                    <x-button class="ml-4">
-                                                        {{ __('Delete') }}
-                                                    </x-button>
-                                                </form>
-                                            </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            </td>
-                                    </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
+                                        </tr>
+                                        @endforeach
+                                        </tbody>
+                                    @endif
+                                    </table>
                             </div>
                         </div>
                     </div>
