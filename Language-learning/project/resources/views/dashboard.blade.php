@@ -134,7 +134,7 @@
             </div>
         </div>
     </div>
-    @if(count($results))
+    @if(count(Auth::user()->result))
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -158,7 +158,7 @@
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
                                     <tr>
-                                        @foreach($results as $result)
+                                        @foreach(Auth::user()->result as $result)
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="flex items-center">
                                                     <div class="ml-4">

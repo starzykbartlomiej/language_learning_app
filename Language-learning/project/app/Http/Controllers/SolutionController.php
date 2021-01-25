@@ -19,9 +19,8 @@ class SolutionController extends Controller
     {
         return view('solutions.index')->withQuiz($quiz)
             ->withQuestions($quiz->question)
-            ->withKeys($keys)
             ->withSolutions($quiz->solution)
-            ->withTotal($quiz->result->points_gained);
+            ->withTotal(0);
     }
 
     /**
