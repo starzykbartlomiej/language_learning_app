@@ -54,6 +54,15 @@
                                     </x-button>
                                 </form>
                                     </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <form method="post" action="{{ route('quizzes.questions.destroy', ['quiz' => $quiz->id, 'question' => $questions])}}">
+                                        @method('DELETE')
+                                        @csrf
+                                        <x-button class="ml-4" id="discusion.{{$quiz->id}}">
+                                            {{ __('Delete') }}
+                                        </x-button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

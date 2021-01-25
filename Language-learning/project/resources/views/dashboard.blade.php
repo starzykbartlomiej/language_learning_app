@@ -98,6 +98,15 @@
                                                     </x-button>
                                                 </form>
                                                 </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <form method="post" action="{{ route('quizzes.destroy', $quiz) }}">
+                                                        @method('Delete')
+                                                        @csrf
+                                                        <x-button class="ml-4">
+                                                            {{ __('Delete') }}
+                                                        </x-button>
+                                                    </form>
+                                                </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             </td>
                                     </tr>

@@ -96,10 +96,9 @@ class QuizController extends Controller
      */
     public function destroy(Quiz $quiz)
     {
-        //
+        $quiz->delete();
+        $quizzes = Quiz::all()->where('user_id', '==' , Auth::id());
+        return view('dashboard')->withQuizzes($quizzes);
     }
-    /*public function details(Quiz $quiz)
-    {
-        return "Hello from details";
-    }*/
+
 }

@@ -70,6 +70,12 @@ class QuestionController extends Controller
 
         if($question->type == 4)
         {
+            $request->validate([
+                'Answer_A'=>'required',
+                'Answer_B'=>'required',
+                'Answer_C'=>'required',
+                'Answer_D'=>'required'
+            ]);
             $option1 = new Option();
             $image = $request->file('Answer_A');
             $new_name = rand() . '.' . $image->getClientOriginalExtension();
@@ -104,6 +110,12 @@ class QuestionController extends Controller
         }
         else if($question->type == 3)
         {
+            $request->validate([
+                'answerA'=>'required',
+                'answerB'=>'required',
+                'answerC'=>'required',
+                'answerD'=>'required'
+            ]);
             $option1 = new Option();
             $option1->data = $request->answerA;
             $option1->question_id = $question->id;
@@ -124,7 +136,6 @@ class QuestionController extends Controller
             $option4->question_id = $question->id;
             $option4->save();
         }
-
         return redirect()->route('quizzes.questions.index', $quiz);
     }
 
@@ -200,6 +211,12 @@ class QuestionController extends Controller
 
         if($question->type == "3")
         {
+            $request->validate([
+                'answerA'=>'required',
+                'answerB'=>'required',
+                'answerC'=>'required',
+                'answerD'=>'required'
+            ]);
             $letter = 'A';
             $options = Option::query()->where('question_id', $question->id)->get();
             foreach($options as $option)
@@ -215,6 +232,12 @@ class QuestionController extends Controller
             $options = Option::query()->where('question_id', $question->id)->get();
             foreach($options as $option)
             {
+                $request->validate([
+                    'Answer_A'=>'required',
+                    'Answer_B'=>'required',
+                    'Answer_C'=>'required',
+                    'Answer_D'=>'required'
+                ]);
                 $var = "Answer_".$letter++;
                 if(isset($request->$var)) {
                     File::delete($option->data);
@@ -236,8 +259,9 @@ class QuestionController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Question $question)
+    public function destroy(Request $request, Quiz $quiz, Question $question)
     {
-
+        $question->delete();
+        return view('quizzes.details')->withQuiz($quiz);
     }
 }
