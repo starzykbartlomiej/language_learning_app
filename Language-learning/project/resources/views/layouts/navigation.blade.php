@@ -17,15 +17,16 @@
                             <div class="ml-10 flex items-baseline space-x-4" :active="{{request()->routeIs('dashboard')}}">
                                 <a href="{{route('dashboard.index')}}"  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
                             </div>
-{{--                            @if()--}}
-                            {{dd()}}
+                            @if(Auth::user()->is_admin)
                             <div class="ml-10 flex items-baseline space-x-4" :active="{{request()->routeIs('admin.*')}}">
                                 <a href="{{route('admin.index')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Admin</a>
                             </div>
-{{--                            @endif--}}
+                            @endif
+                            @if(strlen(Auth::user()->expert))
                             <div class="ml-10 flex items-baseline space-x-4" :active="{{request()->routeIs('expert.*')}}">
                                 <a href="{{route('expert.index')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Expert</a>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="hidden md:block">

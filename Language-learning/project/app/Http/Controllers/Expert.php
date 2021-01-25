@@ -13,7 +13,7 @@ class Expert extends Controller
      */
     public function index()
     {
-        //
+        return view('expert.index');
     }
 
     /**
