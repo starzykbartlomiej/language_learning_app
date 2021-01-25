@@ -97,8 +97,11 @@ class QuizController extends Controller
     public function destroy(Quiz $quiz)
     {
         $quiz->delete();
-        $quizzes = Quiz::all()->where('user_id', '==' , Auth::id());
-        return view('dashboard')->withQuizzes($quizzes);
+//        $quizzes = Quiz::all()->where('user_id', '==' , Auth::id());
+        if(Auth::user()->is_admin)
+            return redirect('admin');
+        else
+            return redirect('dashboard');
     }
 
 }
