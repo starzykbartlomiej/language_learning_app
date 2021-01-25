@@ -50,7 +50,7 @@
                                                     </x-button>
                                                 </form>
                                             </td>
-                                            @if($comment->user_id==\Illuminate\Support\Facades\Auth::id())
+                                            @if($comment->user_id==Auth::id() or Auth::user()->is_admin)
                                                 <td class="px-6 py-4 whitespace-wrap">
                                                     <form method="get" action="{{ route('quizzes.comments.edit',  ['quiz'=>$quiz, 'comment'=>$comment]) }}">
                                                         <x-button class="ml-4">

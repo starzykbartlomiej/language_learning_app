@@ -43,7 +43,7 @@ class LanguageController extends Controller
         }else {
             $language = new Language();
             response(redirect()->route('languages.store'));
-            $language->language = $request->language;
+            $language->language = ucfirst($request->language);
             $language->save();
             return redirect(route('quizzes.create'));
         }

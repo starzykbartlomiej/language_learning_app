@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Language;
+use App\Models\Quiz;
+use Auth;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Collection;
 
 class Expert extends Controller
 {
@@ -13,7 +17,17 @@ class Expert extends Controller
      */
     public function index()
     {
-        return view('expert.index');
+        $language = Language::all()->where('language', ucfirst(Auth::user()->expert))->first();
+        if($language)
+        {
+            $language_id = $language->id;
+            $quizzes = Quiz::all()->where('language_id', $language_id);
+        }
+        else
+        {
+            return redirect('/quizzes');
+        }
+        return view('expert.index')->withQuizzes($quizzes);
     }
 
     /**

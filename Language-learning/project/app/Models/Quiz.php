@@ -47,7 +47,6 @@ class Quiz extends Model
     public function is_owner($owner)
     {
         $logged = auth()->user()->getAuthIdentifier();
-        //$owner = User::query()->where('id', $owner)->first('id');
         if($logged == $owner)
             return true;
         else

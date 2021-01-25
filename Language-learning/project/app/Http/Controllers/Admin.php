@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Quiz;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Admin extends Controller
 {
@@ -14,8 +15,15 @@ class Admin extends Controller
      */
     public function index()
     {
-        $quizzes = Quiz::all();
-        return view('admin.index')->withQuizzes($quizzes);
+        if(Auth::user()->is_admin)
+        {
+            $quizzes = Quiz::all();
+            return view('admin.index')->withQuizzes($quizzes);
+        }
+       else
+       {
+           return redirect('quizzes');
+       }
     }
 
     /**
