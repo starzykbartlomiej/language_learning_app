@@ -23,6 +23,12 @@ class QuestionController extends Controller
         $questions = Question::all()->where('quiz_id', $quiz->id);
         return view('questions.index')->withQuiz($quiz)->withQuestions($questions);
     }
+    public function index2(Quiz $quiz)
+    {
+        //TODO add user name in questions index
+        $questions = Question::all()->where('quiz_id', $quiz->id);
+        return view('quizzes.details')->withQuiz($quiz)->withQuestions($questions);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -31,6 +37,22 @@ class QuestionController extends Controller
      */
     public function create(Request $request, Quiz $quiz)
     {
+        if(isset($request->create_new))
+        {
+            switch($request->question_type)
+            {
+                case 1:
+                    return view('quizzes.question1.create')->withQuiz($quiz);
+                case 2:
+                    return view('quizzes.question2.create')->withQuiz($quiz);
+                case 3:
+                    return view('quizzes.question3.create')->withQuiz($quiz);
+                case 4:
+                    return view('quizzes.question4.create')->withQuiz($quiz);
+                case 5:
+                    return view('quizzes.question5.create')->withQuiz($quiz);
+            }
+        }
         switch($request->question_type)
         {
             case 1:
@@ -136,6 +158,10 @@ class QuestionController extends Controller
             $option4->data = $request->answerD;
             $option4->question_id = $question->id;
             $option4->save();
+        }
+        if(isset($request->create_new))
+        {
+            return $this->index2($quiz);
         }
         return redirect()->route('quizzes.questions.index', $quiz);
     }

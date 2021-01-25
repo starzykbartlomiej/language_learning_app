@@ -22,6 +22,7 @@
                             <x-input id="answer" class="block mt-1 w-full" type="text" name="answer" :value="old('answer')" />
                         </div>
 
+                        <input type="hidden" name="create_new" value="create_new"/>
                         <x-input id="type" class="block mt-1 w-full" type="hidden" name="type" :value=2 />
 
                         <div class="flex items-center justify-end mt-4">

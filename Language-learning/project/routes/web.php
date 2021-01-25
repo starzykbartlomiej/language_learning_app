@@ -26,7 +26,7 @@ Route::resource('quizzes.comments', App\Http\Controllers\QuizCommentController::
 Route::resource('quizzes.questions', App\Http\Controllers\QuestionController::class)->middleware('auth');
 Route::resource('quizzes.solutions', App\Http\Controllers\SolutionController::class)->middleware('auth');
 Route::resource('comments.subcomments',\App\Http\Controllers\CommentSubcommentController::class)->middleware('auth');
-//Route::get('/quizzes/{quiz}/details', [App\Http\Controllers\QuizController::class, 'details'])->middleware('auth')->name('quizzes.details');
+//Route::redirect('quizzes.questions.index2', 'App\Http\Controllers\QuizController@index2')->middleware('auth');
 
 
 require __DIR__.'/auth.php';

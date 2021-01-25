@@ -39,6 +39,7 @@
                             </select>
                         </div>
 
+                        <input type="hidden" name="create_new" value="create_new"/>
                         <x-input id="type" class="block mt-1 w-full" type="hidden" name="type" :value=4 />
 
                         <div class="flex items-center justify-end mt-4">

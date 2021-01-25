@@ -16,7 +16,7 @@
                                 <x-input id="in_english" class="block mt-1 w-full" type="text" name="in_english"
                                          :value="old('in_english')" autofocus />
                             </div>
-
+                            <input type="hidden" name="create_new" value="create_new"/>
                             <div class="mt-4">
                                 <x-label for="answer" :value="__('Answer in English')" />
                                 <x-input id="answer" class="block mt-1 w-full" type="text" name="answer" :value="old('answer')" />

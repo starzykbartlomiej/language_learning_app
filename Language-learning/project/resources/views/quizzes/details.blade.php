@@ -75,6 +75,7 @@
             <div class="flex items-center justify-center mt-4 px-4 pb-5">
                 <form method="get" action="{{ route('quizzes.questions.create', $quiz )}}">
                     @csrf
+                    <input type="hidden" name="create_new" value="create_new"/>
                     <label for="question_type">Question type: </label>
                     <select class="form-control rounded-md" name="question_type" id="question_type">
                         <option value = 1>{{ __('Word translation') }}</option>
