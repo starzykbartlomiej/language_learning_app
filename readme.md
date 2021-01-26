@@ -86,7 +86,7 @@ docker container stop mysql
 
 
 # Database scheme
-![](php_language_platform_Physical_Model-2021-01-26_16-53.svg)
+![](php_database_lang_platform.svg)
 # Code overview  
 ## Folders:
 * *app - Contains all the Eloquent models*
