@@ -89,17 +89,17 @@ docker container stop mysql
 ![](php_language_platform_Physical_Model-2021-01-26_16-53.svg)
 # Code overview  
 ## Folders:
-* <em>app - Contains all the Eloquent models</em>
-* <em>app/Http/Controllers/Api - Contains all the api controllers</em>
-* <em>app/Http/Middleware - Contains the JWT auth middleware</em>
-* <em>app/Http/Requests/Api - Contains all the api form requests</em>
-* <em>config - Contains all the application configuration files</em>
-* <em>database/factories - Contains the model factory for all the models</em>
-* <em>database/migrations - Contains all the database migrations</em>
-* <em>database/seeds - Contains the database seeder</em>
-* <em>routes - Contains all the routes</em>
-* <em>tests - Contains vendor tests</em>
-* <em>tests/tests_codeception/acceptance - Contains all the codeception tests</em>
+* *app - Contains all the Eloquent models*
+* *app/Http/Controllers/Api - Contains all the api controllers*
+* *app/Http/Middleware - Contains the JWT auth middleware*
+* *app/Http/Requests/Api - Contains all the api form requests*
+* *config - Contains all the application configuration files*
+* *database/factories - Contains the model factory for all the models*
+* *database/migrations - Contains all the database migrations*
+* *database/seeds - Contains the database seeder*
+* *routes - Contains all the routes*
+* *tests - Contains vendor tests*
+* *tests/tests_codeception/acceptance - Contains all the codeception tests*
   
 ## Environment variables:
 ```
