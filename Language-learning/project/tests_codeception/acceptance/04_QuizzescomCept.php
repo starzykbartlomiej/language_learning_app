@@ -128,7 +128,7 @@ $I->seeInDatabase('questions',[
     'in_english'=>'a',
     'type'=>1
 ]);
-$I->click('Finish quiz editing');
+$I->click('Finish quiz creation');
 $I->seeCurrentUrlEquals('/dashboard');
 $I->click('Discuss');
 $I->seeCurrentUrlEquals('/quizzes/1/comments');

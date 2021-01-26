@@ -114,7 +114,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,7 +123,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2020_12_15_145710_create_comments_table',1),(5,'2021_01_12_113821_create_quizzes_table',1),(6,'2021_01_12_135444_create_questions_table',1),(7,'2021_01_12_143411_add_quiz_id_and_user_id_to_comments_table',1),(8,'2021_01_12_172347_create_options_table',1),(9,'2021_01_13_134656_create_languages_table',1),(10,'2021_01_13_135157_add_language_id_to_quizzes_table',1),(11,'2021_01_15_203911_set_language_unique_on_language_table',1),(12,'2021_01_22_142810_create_solutions_table',1),(13,'2021_01_22_161644_add_quiz_field_to_solutions_table',1),(14,'2021_01_22_223425_create_results_table',1),(15,'2021_01_23_165104_create_subcomments_table',1),(16,'2021_01_25_200204_add_is_admin_and_expert_fields_to_users_table',1);
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2020_12_15_145710_create_comments_table',1),(5,'2021_01_12_113821_create_quizzes_table',1),(6,'2021_01_12_135444_create_questions_table',1),(7,'2021_01_12_143411_add_quiz_id_and_user_id_to_comments_table',1),(8,'2021_01_12_172347_create_options_table',1),(9,'2021_01_13_134656_create_languages_table',1),(10,'2021_01_13_135157_add_language_id_to_quizzes_table',1),(11,'2021_01_15_203911_set_language_unique_on_language_table',1),(12,'2021_01_22_142810_create_solutions_table',1),(13,'2021_01_22_161644_add_quiz_field_to_solutions_table',1),(14,'2021_01_22_223425_create_results_table',1),(15,'2021_01_23_165104_create_subcomments_table',1),(16,'2021_01_25_200204_add_is_admin_and_expert_fields_to_users_table',1),(17,'2021_01_26_125536_add_check_field_to_questions_table',1),(18,'2021_01_26_142216_add_finished_field_to_quizzes_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,6 +195,7 @@ CREATE TABLE `questions` (
   `type` int NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `check` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `questions_quiz_id_foreign` (`quiz_id`),
   CONSTRAINT `questions_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`id`) ON DELETE CASCADE
@@ -223,6 +224,7 @@ CREATE TABLE `quizzes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `language_id` bigint unsigned NOT NULL,
+  `finished` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `quizzes_user_id_foreign` (`user_id`),
   KEY `quizzes_language_id_foreign` (`language_id`),
@@ -366,7 +368,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$91wTR.PU918sqT1JG8pnm.ZlNdev3wK3iCVpl995HGx3SXQKA7j/m',NULL,NULL,NULL,1,'Spanish'),(2,'Alfons','alfons@gmail.com',NULL,'$2y$10$0fVqbiBpsmie8p001A0npejjZ4aJZNp0VYVLvnjAQa.jloItWC2Ue',NULL,NULL,NULL,0,''),(3,'Dr. Avery Krajcik DVM','marcelina80@example.com','2021-01-26 01:19:39','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','qjhHyjdSRa','2021-01-26 01:19:39','2021-01-26 01:19:39',0,''),(4,'Dr. Felicita Rowe','pacocha.mollie@example.org','2021-01-26 01:19:39','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','JxR4DRxBsv','2021-01-26 01:19:39','2021-01-26 01:19:39',0,''),(5,'Moshe Rice','leonora07@example.net','2021-01-26 01:19:39','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','06XwRf35IC','2021-01-26 01:19:39','2021-01-26 01:19:39',0,''),(6,'Assunta Murphy','kboehm@example.com','2021-01-26 01:19:39','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','PvaAyXtLm9','2021-01-26 01:19:39','2021-01-26 01:19:39',0,'');
+INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$2Tu6en52cW0U4Qdz1XllAOu72CO7XJF7l/kPrPBnKHepxBXiKA6WW',NULL,NULL,NULL,1,'Spanish'),(2,'Alfons','alfons@gmail.com',NULL,'$2y$10$1XxhZFa9L.iyPqqdc5oLh.EIenA4qLAxVqp1GWow4EsZ0H5ZnreD.',NULL,NULL,NULL,0,''),(3,'Khalid Mann','gusikowski.juana@example.net','2021-01-26 16:20:43','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','USpblFPCLy','2021-01-26 16:20:43','2021-01-26 16:20:43',0,''),(4,'Hattie Dooley DDS','turcotte.gilberto@example.org','2021-01-26 16:20:43','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','sRFU9o4Mg1','2021-01-26 16:20:43','2021-01-26 16:20:43',0,''),(5,'Hugh Wisoky','christopher.sipes@example.org','2021-01-26 16:20:43','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','Ox9UF0uUxN','2021-01-26 16:20:43','2021-01-26 16:20:43',0,''),(6,'Leone Schulist','qfritsch@example.com','2021-01-26 16:20:43','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','ywO7i400ej','2021-01-26 16:20:43','2021-01-26 16:20:43',0,'');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -379,4 +381,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-26  1:19:42
+-- Dump completed on 2021-01-26 16:20:58
