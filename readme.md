@@ -21,40 +21,40 @@ Alternative installation is possible without local dependencies relying on [Dock
 git clone https://bitbucket.org/starzyk_bartlomiej/php_2020_platforma_do_nauki_jezykow/src/master/ 
 ```   
 2. Start database:  
-```python
+```
 docker run --name=mysql --net=host --rm --env MYSQL_ROOT_PASSWORD=root123 --env MYSQL_DATABASE=test --env MYSQL_USER=test --env MYSQL_PASSWORD=test123 -d mysql/mysql-server:8.0
 ```
 3. Connect with host:  
-```python
+```
 while ! timeout 1 bash -c "echo > /dev/tcp/localhost/3306" 2> /dev/null; do sleep 1; done; echo "Done.";
 ```
 4. Go to project directory:  
-```python
+```
 cd project  
 ```
 5. Install composer:  
-```python
+```
 composer install
 ```
 6. Replace .env file:  
-```python
+```
 cp .env.example .env
 ```
 
 7. Generate artisan key:  
-```python
+```
 php artisan key:generate
 ```
 8. Refresh migration:  
-```python
+```
 php artisan migrate:fresh
 ```
 9. Add seed:  
-```python
+```
 php artisan db:seed
 ```
 10. Create dump.sql to tests:  
-```python
+```
 docker exec mysql mysqldump -u root --password=root123 test > tests_codeception/_data/dump.sql
 ```
 11.  Execute unit tests:  
@@ -72,15 +72,15 @@ vendor/bin/codecept run
 ```
 ## Cleaning procceses:  
 1. Stop server:
-```python
+```
 killall php php7.4
 ```
 2. Go to previous directory:
-```python
+```
 cd ..
 ```
 3. Stop database:
-```python
+```
 docker container stop mysql
 ```
 
