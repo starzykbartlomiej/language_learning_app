@@ -3,7 +3,7 @@ This is the language platform project.
 It was fully developed by four students from Cracow, with the use of **PHP Laravel Framework**.  
 The page gives few possibilities to get better in choosen language.  
 For example:  
-**1. You can create multiplie types of quizess**  
+**1. You can create multiple types of quizess**  
 **2. Add new languages**  
 **3. Achieve expert badges**  
 **4. And more yet to come...**  
@@ -22,44 +22,44 @@ git clone https://bitbucket.org/starzyk_bartlomiej/php_2020_platforma_do_nauki_j
 ```   
 2. Start database:  
 ```python
-! docker run --name=mysql --net=host --rm --env MYSQL_ROOT_PASSWORD=root123 --env MYSQL_DATABASE=test --env MYSQL_USER=test --env MYSQL_PASSWORD=test123 -d mysql/mysql-server:8.0
+docker run --name=mysql --net=host --rm --env MYSQL_ROOT_PASSWORD=root123 --env MYSQL_DATABASE=test --env MYSQL_USER=test --env MYSQL_PASSWORD=test123 -d mysql/mysql-server:8.0
 ```
 3. Connect with host:  
 ```python
-! while ! timeout 1 bash -c "echo > /dev/tcp/localhost/3306" 2> /dev/null; do sleep 1; done; echo "Done.";
+while ! timeout 1 bash -c "echo > /dev/tcp/localhost/3306" 2> /dev/null; do sleep 1; done; echo "Done.";
 ```
 4. Go to project directory:  
 ```python
-%cd project  
+cd project  
 ```
 5. Install composer:  
 ```python
-! composer install
+composer install
 ```
 6. Replace .env file:  
 ```python
-! cp .env.example .env
+cp .env.example .env
 ```
 
 7. Generate artisan key:  
 ```python
-! php artisan key:generate
+php artisan key:generate
 ```
 8. Refresh migration:  
 ```python
-! php artisan migrate:fresh
+php artisan migrate:fresh
 ```
 9. Add seed:  
 ```python
-! php artisan db:seed
+php artisan db:seed
 ```
 10. Create dump.sql to tests:  
 ```python
-! docker exec mysql mysqldump -u root --password=root123 test > tests_codeception/_data/dump.sql
+docker exec mysql mysqldump -u root --password=root123 test > tests_codeception/_data/dump.sql
 ```
 11.  Execute unit tests:  
 ```python
-! vendor/bin/phpunit
+vendor/bin/phpunit
 ```
 12.  Start Server:  
 ```python
@@ -68,25 +68,25 @@ artisanServe = subprocess.Popen(['php', 'artisan', 'serve', '--port', '8888'])
 ```
 13.  Run codeception tests:  
 ```python
-! vendor/bin/codecept run
+vendor/bin/codecept run
 ```
 ## Cleaning procceses:  
 1. Stop server:
 ```python
-! killall php php7.4
+killall php php7.4
 ```
 2. Go to previous directory:
 ```python
-%cd ..
+cd ..
 ```
 3. Stop database:
 ```python
-! docker container stop mysql
+docker container stop mysql
 ```
 
 
 # Database scheme
-![](php_database_lang_platform.svg)
+![](php_language_platform_Physical_Model-2021-01-26_16-53.svg)
 # Code overview  
 ## Folders:
 - <em>app - Contains all the Eloquent models</em>
@@ -100,7 +100,8 @@ artisanServe = subprocess.Popen(['php', 'artisan', 'serve', '--port', '8888'])
 - <em>routes - Contains all the routes</em>
 - <em>tests - Contains vendor tests</em>
 - <em>tests/tests_codeception/acceptance - Contains all the codeception tests</em>
- ## Environment variables:
+  
+## Environment variables:
 ```
 .env
 ```
