@@ -121,13 +121,13 @@
                     </x-button>
                 </form>
                 <div class="flex items-center justify-center mt-4 px-4 pb-5">
-                    {{--                    <a href="{{ url('/quizzes') }}">--}}
-                    <form method="get" action="{{ route('dashboard.index')}}">
+                    <form method="post" action="{{ route('quizzes.update', $quiz)}}">
+                        @csrf
+                        @method('patch')
                         <x-button aclass="ml-4">
-                            {{ __('Finish quiz editing') }}
+                            {{ __('Finish quiz creation') }}
                         </x-button>
                     </form>
-                    {{--</a>--}}
                 </div>
             </div>
         </div>

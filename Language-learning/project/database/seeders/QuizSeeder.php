@@ -16,7 +16,7 @@ class QuizSeeder extends Seeder
      */
     public function run()
     {
-        Quiz::factory()->count(2)->create(['user_id' => 1, 'language_id' => 1,]);
-        Quiz::factory()->count(2)->create(['user_id' => 2, 'language_id' => 2,]);
+        Quiz::factory()->count(2)->create(['user_id' => 1, 'language_id' => 1, 'finished' => true]);
+        Quiz::factory()->count(2)->create(['user_id' => 2, 'language_id' => 2, 'finished' => true]);
     }
 }

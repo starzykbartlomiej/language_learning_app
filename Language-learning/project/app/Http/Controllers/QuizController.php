@@ -85,7 +85,9 @@ class QuizController extends Controller
      */
     public function update(Request $request, Quiz $quiz)
     {
-        //
+        $quiz->finished = 1;
+        $quiz->save();
+        return redirect('/dashboard');
     }
 
     /**

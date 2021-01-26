@@ -28,6 +28,7 @@
                                     <tbody class="bg-white divide-y divide-gray-200">
                                     <tr>
                                         @foreach($quizzes as $quiz)
+                                            @if(!$quiz->finished)
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="flex items-center">
                                                     <div class="ml-4">
@@ -100,6 +101,7 @@
                                                         </x-button>
                                                     </form>
                                                 </td>
+                                                @endif
                                             @endif
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         </td>

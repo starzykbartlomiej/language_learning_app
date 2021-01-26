@@ -15,13 +15,5 @@ class ResultSeeder extends Seeder
      */
     public function run()
     {
-
-        DB::table('results')->insert([
-            'quiz_id' => 4,
-            'user_id' => 1,
-            'points_gained' => 2
-        ]);
-
-
     }
 }
