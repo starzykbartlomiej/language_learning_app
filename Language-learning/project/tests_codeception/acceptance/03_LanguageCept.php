@@ -13,7 +13,7 @@ $I->see('Language');
 $I->dontSeeInDatabase('languages', [
     'language' => 'english',
 ]);
-$I->click("Create new...");
+$I->click('Create new...');
 $I->seeCurrentUrlEquals('/quizzes/create');
 $I->click("Add new language");
 $I->seeCurrentUrlEquals('/languages/create');

@@ -7,89 +7,83 @@ $I->fillField('email', 'john.doe@gmail.com');
 $I->fillField('password', 'secret');
 $I->click('Sign in');
 $I->seeCurrentUrlEquals('/dashboard');
-$I->click('Discuss');
-$I->seeCurrentUrlEquals('/quizzes/1/comments');
+$I->see('Create new...','button');
+$I->click('Create new...');
+$I->seeCurrentUrlEquals('/quizzes/create');
+$I->dontSeeInDatabase('languages',[
+    'language'=>'spanish'
+]);
+$I->click("Add new language");
+$I->seeCurrentUrlEquals('/languages/create');
+$I->fillField('language', 'spanish');
+$I->click("Add new language");
+$I->seeInDatabase('languages', [
+    'language' => 'spanish',
+]);
+$I->seeCurrentUrlEquals('/quizzes/create');
+$I->selectOption('form select[name=language]', 'Spanish');
+$I->click('Select language');
+$I->seeCurrentUrlEquals('/quizzes/1/questions');
+$I->selectOption('form select[name=question_type]', 'Word translation');
+$I->click('Add new question');
+//$I->seeCurrentUrlEquals('/quizzes/1/questions/create?_token=RSg4xmZW4OPgfLXx3LivZ2SCnTrzRH5LXAGxpO8d&question_type=1');
+$language=$id = $I->grabFromDatabase('languages', 'language', [
+    'language' => 'spanish'
+]);
+$I->fillField('Word in '.$language, 'Hola');
+$I->fillField('Answer in English', 'hello');
+$I->click('Add new question');
+$I->seeInDatabase('questions',[
+  'id'=>1,
+    'answer'=>'hello',
+    'in_english'=>'Hola',
+    'type'=>1
+]);
+$I->seeCurrentUrlEquals('/quizzes/1/questions');
+$I->selectOption('form select[name=question_type]', 'Sentence translation');
+$I->click('Add new question');
+$I->fillField('Sentence in '.$language, 'ABC ABC ABC');
+$I->fillField('Answer in English', 'ABC ABD ABD');
+$I->click('Add new question');
+$I->seeInDatabase('questions',[
+    'id'=>2,
+    'answer'=>'ABC ABD ABD',
+    'in_english'=>'ABC ABC ABC',
+    'type'=>2
+]);
+$I->seeCurrentUrlEquals('/quizzes/1/questions');
+$I->selectOption('form select[name=question_type]', 'Multiple choice');
+$I->click('Add new question');
+$I->fillField('Task content in '.$language, 'ABC');
+$I->fillField('answer A', 'A');
+$I->fillField('answer B', 'B');
+$I->fillField('answer C', 'C');
+$I->fillField('answer D', 'D');
+$I->selectOption('form select[name=answer]', 'Answer A');
+$I->click('Add new question');
+$I->seeInDatabase('questions',[
+    'id'=>3,
+    'answer'=>'A',
+    'in_english'=>'ABC',
+    'type'=>3
+]);
+$I->seeCurrentUrlEquals('/quizzes/1/questions');
 $I->see('Edit','button');
 $I->see('Delete','button');
-$I->see('Add new comment','button');
-$I->see('Go to discussion','button');
-$I->seeInDatabase('comments',[
-    'user_id'=>1,
-    'quiz_id'=>1
+$I->click('Edit');
+$I->fillField('Word in: '.$language, 'abc');
+$I->fillField('Answer in English', 'cba');
+$I->click('Save changes...');
+$I->seeInDatabase('questions',[
+    'id'=>1,
+    'answer'=>'cba',
+    'in_english'=>'abc',
+    'type'=>1
 ]);
 $I->click('Delete');
-$I->seeCurrentUrlEquals('/quizzes/1/comments');
-$I->dontSee('Edit','button');
-$I->dontSee('Delete','button');
-$I->see('Add new comment','button');
-$I->see('Go to discussion','button');
-$I->dontSeeInDatabase('comments',[
-    'user_id'=>1,
-    'quiz_id'=>1
+$I->dontSeeInDatabase('questions',[
+    'id'=>1,
+    'answer'=>'cba',
+    'in_english'=>'abc',
+    'type'=>1
 ]);
-$I->click('Add new comment');
-$I->seeCurrentUrlEquals('/quizzes/1/comments/create');
-$I->fillField('title', 'abc');
-$I->fillField('text', 'abc');
-$I->click('Create');
-$I->seeCurrentUrlEquals('/quizzes/1/comments');
-$I->SeeInDatabase('comments',[
-    'user_id'=>1,
-    'quiz_id'=>1,
-    'title'=>'abc',
-    'text'=>'abc'
-]);
-$I->see('Edit','button');
-$I->see('Delete','button');
-$I->click('Edit');
-$I->seeCurrentUrlEquals('/quizzes/1/comments/6/edit');
-$I->fillField('title', 'abcd');
-$I->fillField('text', 'abcd');
-$I->click('Edit');
-$I->SeeInDatabase('comments',[
-    'user_id'=>1,
-    'quiz_id'=>1,
-    'title'=>'abcd',
-    'text'=>'abcd'
-]);
-$I->seeCurrentUrlEquals('/quizzes/1/comments');
-$I->see('Edit','button');
-$I->see('Delete','button');
-$I->click('Go to discussion');
-$I->seeCurrentUrlEquals('/comments/2/subcomments');
-$I->see('Go back','button');
-$I->see('Add answer','button');
-$I->seeNumRecords(0, 'subcomments');
-$I->click('Add answer');
-$I->seeCurrentUrlEquals('/comments/2/subcomments/create');
-$I->fillField('title', 'abc');
-$I->fillField('text', 'abc');
-$I->click('Create');
-$I->seeCurrentUrlEquals('/comments/2/subcomments');
-$I->seeNumRecords(1, 'subcomments');
-$I->seeInDatabase('subcomments',[
-    'title'=>'abc',
-    'text'=>'abc'
-]);
-$I->see('Edit','button');
-$I->see('Delete','button');
-$I->click('Edit');
-$I->seeCurrentUrlEquals('/comments/2/subcomments/1/edit');
-$I->fillField('title', 'abcd');
-$I->fillField('text', 'abcd');
-$I->click('Edit');
-$I->seeCurrentUrlEquals('/comments/2/subcomments');
-$I->seeNumRecords(1, 'subcomments');
-$I->seeInDatabase('subcomments',[
-    'title'=>'abcd',
-    'text'=>'abcd'
-]);
-$I->click('Delete');
-$I->seeNumRecords(0, 'subcomments');
-$I->dontSeeInDatabase('subcomments',[
-    'title'=>'abcd',
-    'text'=>'abcd'
-]);
-$I->click('Go back');
-$I->seeCurrentUrlEquals('/quizzes');
-
