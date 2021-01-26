@@ -58,7 +58,7 @@ php artisan db:seed
 docker exec mysql mysqldump -u root --password=root123 test > tests_codeception/_data/dump.sql
 ```
 11.  Execute unit tests:  
-```python
+```
 vendor/bin/phpunit
 ```
 12.  Start Server:  
@@ -67,7 +67,7 @@ import subprocess
 artisanServe = subprocess.Popen(['php', 'artisan', 'serve', '--port', '8888'])
 ```
 13.  Run codeception tests:  
-```python
+```
 vendor/bin/codecept run
 ```
 ## Cleaning procceses:  
@@ -89,17 +89,17 @@ docker container stop mysql
 ![](php_language_platform_Physical_Model-2021-01-26_16-53.svg)
 # Code overview  
 ## Folders:
-- <em>app - Contains all the Eloquent models</em>
-- <em>app/Http/Controllers/Api - Contains all the api controllers</em>
-- <em>app/Http/Middleware - Contains the JWT auth middleware</em>
-- <em>app/Http/Requests/Api - Contains all the api form requests</em>
-- <em>config - Contains all the application configuration files</em>
-- <em>database/factories - Contains the model factory for all the models</em>
-- <em>database/migrations - Contains all the database migrations</em>
-- <em>database/seeds - Contains the database seeder</em>
-- <em>routes - Contains all the routes</em>
-- <em>tests - Contains vendor tests</em>
-- <em>tests/tests_codeception/acceptance - Contains all the codeception tests</em>
+* <em>app - Contains all the Eloquent models</em>
+* <em>app/Http/Controllers/Api - Contains all the api controllers</em>
+* <em>app/Http/Middleware - Contains the JWT auth middleware</em>
+* <em>app/Http/Requests/Api - Contains all the api form requests</em>
+* <em>config - Contains all the application configuration files</em>
+* <em>database/factories - Contains the model factory for all the models</em>
+* <em>database/migrations - Contains all the database migrations</em>
+* <em>database/seeds - Contains the database seeder</em>
+* <em>routes - Contains all the routes</em>
+* <em>tests - Contains vendor tests</em>
+* <em>tests/tests_codeception/acceptance - Contains all the codeception tests</em>
   
 ## Environment variables:
 ```
