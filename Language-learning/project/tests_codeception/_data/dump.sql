@@ -368,7 +368,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$2Tu6en52cW0U4Qdz1XllAOu72CO7XJF7l/kPrPBnKHepxBXiKA6WW',NULL,NULL,NULL,1,'Spanish'),(2,'Alfons','alfons@gmail.com',NULL,'$2y$10$1XxhZFa9L.iyPqqdc5oLh.EIenA4qLAxVqp1GWow4EsZ0H5ZnreD.',NULL,NULL,NULL,0,''),(3,'Khalid Mann','gusikowski.juana@example.net','2021-01-26 16:20:43','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','USpblFPCLy','2021-01-26 16:20:43','2021-01-26 16:20:43',0,''),(4,'Hattie Dooley DDS','turcotte.gilberto@example.org','2021-01-26 16:20:43','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','sRFU9o4Mg1','2021-01-26 16:20:43','2021-01-26 16:20:43',0,''),(5,'Hugh Wisoky','christopher.sipes@example.org','2021-01-26 16:20:43','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','Ox9UF0uUxN','2021-01-26 16:20:43','2021-01-26 16:20:43',0,''),(6,'Leone Schulist','qfritsch@example.com','2021-01-26 16:20:43','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','ywO7i400ej','2021-01-26 16:20:43','2021-01-26 16:20:43',0,'');
+INSERT INTO `users` VALUES (1,'John Doe','john.doe@gmail.com',NULL,'$2y$10$uiO9KP.MbHjJUuiFAEZtE.5163lhJKFjZ2hHR2YAWzV/963rsAbwy',NULL,NULL,NULL,1,'Spanish'),(2,'Alfons','alfons@gmail.com',NULL,'$2y$10$9wh575Yr0l3MyoSkQwZUCuLJjX3PY1PFVYaLkRmnm5/4Wh78Q8x6e',NULL,NULL,NULL,0,''),(3,'Kenton Hilpert','okon.sherman@example.net','2021-01-26 17:56:44','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','XI1AGspsH4','2021-01-26 17:56:44','2021-01-26 17:56:44',0,''),(4,'Jermey McDermott V','kelvin92@example.com','2021-01-26 17:56:44','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','4RAoYiQWX1','2021-01-26 17:56:44','2021-01-26 17:56:44',0,''),(5,'Libbie Gerlach III','duane50@example.org','2021-01-26 17:56:44','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','xtmvkxQoMf','2021-01-26 17:56:44','2021-01-26 17:56:44',0,''),(6,'Prof. Will Swift','rex.crist@example.com','2021-01-26 17:56:44','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','45oxqmPjmP','2021-01-26 17:56:44','2021-01-26 17:56:44',0,'');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -381,4 +381,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-26 16:20:58
+-- Dump completed on 2021-01-26 17:57:26
