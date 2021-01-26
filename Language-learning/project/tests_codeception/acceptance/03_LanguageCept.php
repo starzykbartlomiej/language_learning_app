@@ -7,6 +7,8 @@ $I->fillField('email', 'john.doe@gmail.com');
 $I->fillField('password', 'secret');
 $I->click('Sign in');
 $I->seeCurrentUrlEquals('/dashboard');
+$I->see('Admin');
+$I->see('Expert');
 $I->dontSee('Edit your quizzes');
 $I->see('Creator Name');
 $I->see('Language');
