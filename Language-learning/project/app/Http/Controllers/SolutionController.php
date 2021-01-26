@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use App\Models\Quiz;
 use App\Models\Result;
 use App\Models\Solution;
@@ -104,9 +105,26 @@ class SolutionController extends Controller
      * @param  \App\Models\solution  $solution
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, solution $solution)
+    public function update(Request $request, Quiz $quiz,  Solution $solution)
     {
-        //
+        $my_question = Question::all()->where('id', $solution->question->id)->first();
+        if(isset($request->is_correct))
+        {
+            $my_question->is_correct = $request->is_correct;
+            $my_question->save();
+            $my_question->check = 0;
+            return view('quizzes.details')->withQuiz($quiz)->withQuestions($quiz->questions);
+        }
+        else
+        {
+            $my_question->check = 1;
+            $my_question->save();
+            return view('solutions.index')->withQuiz($quiz)
+                ->withQuestions($quiz->question)
+                ->withSolutions($quiz->solution)
+                ->withTotal(0);
+        }
+
     }
 
     /**

@@ -26,6 +26,10 @@
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Is question correct?
                             </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Needs to be checked?
+                            </th>
                         </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
@@ -42,18 +46,46 @@
                                 </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         @if( $questions->is_correct == 0)
-                                        <div class="text-sm text-gray-900">Question was flagged!</div>
+                                        <div class="text-sm text-gray-900">Uncorrect</div>
                                         @else
                                             <div class="text-sm text-gray-900">Correct</div>
                                         @endif
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                <form method="get" action="{{ route('quizzes.questions.edit', ['quiz' => $quiz->id, 'question' => $questions])}}">
-                                    <x-button class="ml-4" id="discusion.{{$quiz->id}}">
-                                        {{ __('Edit') }}
-                                    </x-button>
-                                </form>
-                                    </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    @if(!$questions->check)
+                                        <div class="text-sm text-gray-900">No</div>
+                                    @else
+                                        <div class="text-sm text-gray-900">Yes</div>
+                                    @endif
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <form method="get" action="{{ route('quizzes.questions.edit', ['quiz' => $quiz->id, 'question' => $questions])}}">
+                                        <x-button class="ml-4" id="discusion.{{$quiz->id}}">
+                                            {{ __('Edit') }}
+                                        </x-button>
+                                    </form>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    @if($questions->is_correct and count($quiz->solution))
+                                        <form method="post" action="{{ route('quizzes.solutions.update', [$quiz, $quiz->solution[$loop->index]])}}">
+                                            @method('patch')
+                                            @csrf
+                                            <x-input id="is_correct" class="block mt-1 w-full" type="hidden" name="is_correct" :value="0" />
+                                            <x-button class="ml-4" id="discusion.{{$quiz->id}}">
+                                                {{ __('Flag as uncorrect') }}
+                                            </x-button>
+                                        </form>
+                                    @elseif(count($quiz->solution))
+                                        <form method="post" action="{{ route('quizzes.solutions.update', [$quiz, $quiz->solution[$loop->index]])}}">
+                                            @method('patch')
+                                            @csrf
+                                            <x-input id="is_correct" class="block mt-1 w-full" type="hidden" name="is_correct" :value="1" />
+                                            <x-button class="ml-4" id="discusion.{{$quiz->id}}">
+                                                {{ __('Flag as correct') }}
+                                            </x-button>
+                                        </form>
+                                    @endif
+                                </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <form method="post" action="{{ route('quizzes.questions.destroy', ['quiz' => $quiz->id, 'question' => $questions])}}">
                                         @method('DELETE')

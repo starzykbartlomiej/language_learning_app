@@ -49,6 +49,15 @@
                                     {{0}}
                                 @endif
                             </td>
+                            <td>
+                            <form method="post" action="{{ route('quizzes.solutions.update', [$quiz, $solutions[$loop->index]])}}">
+                                @method('patch')
+                                @csrf
+                                <x-button-delete aclass="ml-4">
+                                    {{ __('Report') }}
+                                </x-button-delete>
+                            </form>
+                            </td>
                         </tr>
                     @endforeach
 

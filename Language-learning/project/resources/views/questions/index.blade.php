@@ -51,9 +51,9 @@
                                         @method('DELETE')
                                         @csrf
                                         <input type="hidden" name="create_new" value="crete_new"/>
-                                        <x-button aclass="ml-4">
+                                        <x-button-delete aclass="ml-4">
                                             {{ __('Delete') }}
-                                        </x-button>
+                                        </x-button-delete>
                                     </form>
                                 </td>
                             </tr>

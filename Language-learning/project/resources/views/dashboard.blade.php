@@ -85,7 +85,7 @@
                                                 <div class="text-sm text-gray-500">{{ucfirst($quiz->language->language)}}</div>
                                             </td>
                                                 <td class="px-6 py-4 whitespace-nowrap">
-                                                    <form method="get" action="{{ route('quizzes.show',['quiz'=>$quiz->id]) }}">
+                                                    <form method="get" action="{{ route('quizzes.show',$quiz) }}">
                                                         <x-button class="ml-4" id="discusion.{{$quiz->id}}">
                                                             {{ __('Details') }}
                                                         </x-button>
