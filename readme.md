@@ -15,71 +15,71 @@ Alternative installation is possible without local dependencies relying on [Dock
 
 ## To start working with page you must execute the following steps:  
 
-1. Clone the repository:  
+* Clone the repository:  
 
 ```
 git clone https://bitbucket.org/starzyk_bartlomiej/php_2020_platforma_do_nauki_jezykow/src/master/ 
 ```   
-2. Start database:  
+* Start database:  
 ```
 docker run --name=mysql --net=host --rm --env MYSQL_ROOT_PASSWORD=root123 --env MYSQL_DATABASE=test --env MYSQL_USER=test --env MYSQL_PASSWORD=test123 -d mysql/mysql-server:8.0
 ```
-3. Connect with host:  
+* Connect with host:  
 ```
 while ! timeout 1 bash -c "echo > /dev/tcp/localhost/3306" 2> /dev/null; do sleep 1; done; echo "Done.";
 ```
-4. Go to project directory:  
+* Go to project directory:  
 ```
 cd project  
 ```
-5. Install composer:  
+* Install composer:  
 ```
 composer install
 ```
-6. Replace .env file:  
+* Replace .env file:  
 ```
 cp .env.example .env
 ```
 
-7. Generate artisan key:  
+* Generate artisan key:  
 ```
 php artisan key:generate
 ```
-8. Refresh migration:  
+* Refresh migration:  
 ```
 php artisan migrate:fresh
 ```
-9. Add seed:  
+* Add seed:  
 ```
 php artisan db:seed
 ```
-10. Create dump.sql to tests:  
+* Create dump.sql to tests:  
 ```
 docker exec mysql mysqldump -u root --password=root123 test > tests_codeception/_data/dump.sql
 ```
-11.  Execute unit tests:  
+*  Execute unit tests:  
 ```
 vendor/bin/phpunit
 ```
-12.  Start Server:  
+*  Start Server:  
 ```python
 import subprocess
 artisanServe = subprocess.Popen(['php', 'artisan', 'serve', '--port', '8888'])
 ```
-13.  Run codeception tests:  
+* Run codeception tests:  
 ```
 vendor/bin/codecept run
 ```
 ## Cleaning procceses:  
-1. Stop server:
+* Stop server:
 ```
 killall php php7.4
 ```
-2. Go to previous directory:
+* Go to previous directory:
 ```
 cd ..
 ```
-3. Stop database:
+* Stop database:
 ```
 docker container stop mysql
 ```
