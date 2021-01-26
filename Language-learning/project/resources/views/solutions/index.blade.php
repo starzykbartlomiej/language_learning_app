@@ -71,7 +71,7 @@
                 <div class="items-center mt-4 px-4 pb-5">
                     <div class="flex items-center justify-center max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div class="text-center font-semibold bg-white overflow-hidden sm:rounded-lg">
-                            Total amount of points = {{$total}}.
+                            Total amount of points = {{$total}} / {{count($questions)}}
                         </div>
                         <a href="{{ url('/quizzes') }}">
                             <x-button class="ml-4">
