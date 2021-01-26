@@ -134,10 +134,81 @@ $I->click('Discuss');
 $I->seeCurrentUrlEquals('/quizzes/1/comments');
 $I->see('Discussion');
 $I->click('Add new comment');
-$I->seeCurrentUrlEquals('quizzes/1/comments/create');
-$I->fillField('Title','a');
-$I->fillField('Text','a');
+$I->fillField('title','a');
+$I->fillField('text','a');
 $I->click('Create');
+$I->seeInDatabase('comments',[
+    'quiz_id'=>1,
+    'user_id'=>1,
+    'title'=>'a',
+    'text'=>'a'
+]);
+$I->see('Go to discussion');
+$I->see('Edit');
+$I->see('Delete');
+$I->click('Edit');
+$I->fillField('title','b');
+$I->fillField('text','b');
+$I->click('Edit');
+$I->seeInDatabase('comments',[
+    'quiz_id'=>1,
+    'user_id'=>1,
+    'title'=>'b',
+    'text'=>'b'
+]);
+$I->click('Go to discussion');
+$title=$I->grabFromDatabase('comments','title',[
+    'id'=>1,
+    'user_id'=>1,
+    'quiz_id'=>1
+]);
+$user=$I->grabFromDatabase('users','email',[
+    'id'=>1,
+]);
+$I->seeCurrentUrlEquals('/quizzes/1/comments/1/subcomments');
+$I->see($title);
+$I->see($user);
+$I->click('Add answer');
+$I->seeCurrentUrlEquals('/quizzes/1/comments/1/subcomments/create');
+$I->fillField('title','ba');
+$I->fillField('text','bc');
+$I->click('Create');
+$I->seeCurrentUrlEquals('/quizzes/1/comments/1/subcomments');
+$I->seeInDatabase('subcomments',[
+    'user_id'=>1,
+    'title'=>'ba'
+]);
+$subcomment=$I->grabFromDatabase('subcomments','title',[
+   'user_id'=>1,
+   'title'=>'ba'
+]);
+$I->see($subcomment);
+$I->click('Edit');
+$I->fillField('title','bba');
+$I->fillField('text','bbc');
+$I->click('Edit');
+$I->seeInDatabase('subcomments',[
+    'user_id'=>1,
+    'title'=>'bba',
+    'text'=>'bbc'
+]);
+$I->seeCurrentUrlEquals('/quizzes/1/comments/1/subcomments');
+$I->click('Delete');
+$I->dontSeeInDatabase('subcomments',[
+    'user_id'=>1,
+    'title'=>'bba',
+    'text'=>'bbc'
+]);
+$I->click('Go back');
+$I->seeCurrentUrlEquals('/quizzes/1/comments');
+$I->click('Go back');
+$I->seeCurrentUrlEquals('/quizzes');
+
+
+
+
+
+
 
 
 
