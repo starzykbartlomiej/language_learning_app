@@ -26,7 +26,7 @@
 
                             <div class="flex items-center justify-end mt-4">
                                 <x-button class="ml-4">
-                                    {{ __('') }}
+                                    {{ __('Add new question') }}
                                 </x-button>
                             </div>
                         </form>

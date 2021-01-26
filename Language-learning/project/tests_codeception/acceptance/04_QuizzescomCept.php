@@ -87,3 +87,57 @@ $I->dontSeeInDatabase('questions',[
     'in_english'=>'abc',
     'type'=>1
 ]);
+$I->click('Finish quiz creation');
+$I->seeCurrentUrlEquals('/dashboard');
+$I->seeInDatabase('quizzes',[
+    'id'=>1,
+    'language_id'=>1,
+    'user_id'=>1
+]);
+$I->click('Details');
+$I->seeCurrentUrlEquals('/quizzes/1');
+$I->see('Type of question');
+$I->see('Word in '.$language);
+$I->see('Answer');
+$I->see('Is question correct?');
+$I->click('Edit');
+$I->seeCurrentUrlEquals('/quizzes/1/questions/2/edit');
+$I->fillField('Word in: '.$language, 'abcgagagjsj');
+$I->fillField('Answer in English', 'sbbsbsbbsbsbs');
+$I->click('Save changes...');
+$I->seeInDatabase('questions',[
+    'id'=>2,
+    'answer'=>'sbbsbsbbsbsbs',
+    'in_english'=>'abcgagagjsj',
+    'type'=>2
+]);
+$I->click('Delete');
+$I->dontSeeInDatabase('questions',[
+    'id'=>2,
+    'answer'=>'abcgagagjsj',
+    'in_english'=>'sbbsbsbbsbsbs',
+    'type'=>2
+]);
+$I->selectOption('form select[name=question_type]','Word translation');
+$I->click('Add new question');
+$I->fillField('Word in '.$language, 'a');
+$I->fillField('Answer in English', 'b');
+$I->click('Add new question');
+$I->seeInDatabase('questions',[
+    'answer'=>'b',
+    'in_english'=>'a',
+    'type'=>1
+]);
+$I->click('Finish quiz editing');
+$I->seeCurrentUrlEquals('/dashboard');
+$I->click('Discuss');
+$I->seeCurrentUrlEquals('/quizzes/1/comments');
+$I->see('Discussion');
+$I->click('Add new comment');
+$I->seeCurrentUrlEquals('quizzes/1/comments/create');
+$I->fillField('Title','a');
+$I->fillField('Text','a');
+$I->click('Create');
+
+
+
