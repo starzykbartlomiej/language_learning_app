@@ -9,7 +9,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
-                    <form method="post" action="{{ route('comments.subcomments.update',['comment'=>$comment,'subcomment'=>$subcomment])}}">
+                    <form method="post" action="{{ route('quizzes.comments.subcomments.update',['quiz'=>$quiz,'comment'=>$comment,'subcomment'=>$subcomment])}}">
                         @csrf
                         @method("PUT")
                         <div>

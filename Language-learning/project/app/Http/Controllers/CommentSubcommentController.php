@@ -16,11 +16,10 @@ class CommentSubcommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function index(Comment $comment)
+    public function index(Quiz $quiz,Comment $comment)
     {
         $subcomments=Subcomment::where('comment_id',$comment->id)->get();
-        Quiz::where('id',$comment->quiz_id);
-        return view('commentssubcomments.index')->withComment($comment)->withSubcomments($subcomments);
+        return view('commentssubcomments.index')->withQuiz($quiz)->withComment($comment)->withSubcomments($subcomments);
     }
 
     /**
@@ -29,9 +28,9 @@ class CommentSubcommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function create(Comment $comment)
+    public function create(Quiz $quiz,Comment $comment)
     {
-        return view("commentssubcomments.create")->withComment($comment);
+        return view("commentssubcomments.create")->withQuiz($quiz)->withComment($comment);
     }
 
     /**
@@ -41,7 +40,7 @@ class CommentSubcommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Comment $comment)
+    public function store(Request $request, Quiz $quiz,Comment $comment)
     {
         $this->validate($request, [
             'title' => 'required',
@@ -54,7 +53,7 @@ class CommentSubcommentController extends Controller
         $subcomment->user_id=$id = Auth::id();
         $subcomment->save();
 
-        return redirect(route('comments.subcomments.index', $comment));
+        return redirect(route('quizzes.comments.subcomments.index', ['quiz'=>$quiz,'comment'=>$comment]));
     }
 
     /**
@@ -76,9 +75,9 @@ class CommentSubcommentController extends Controller
      * @param  \App\Models\Subcomment  $subcomment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment, Subcomment $subcomment)
+    public function edit(Quiz $quiz,Comment $comment, Subcomment $subcomment)
     {
-        return view('commentssubcomments.edit')->withComment($comment)->withSubcomment($subcomment);
+        return view('commentssubcomments.edit')->withQuiz($quiz)->withComment($comment)->withSubcomment($subcomment);
     }
 
     /**
@@ -89,7 +88,7 @@ class CommentSubcommentController extends Controller
      * @param  \App\Models\Subcomment  $subcomment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment, Subcomment $subcomment)
+    public function update(Request $request, Quiz $quiz,Comment $comment, Subcomment $subcomment)
     {
         $this->validate($request, [
             'title' => 'required',
@@ -101,7 +100,7 @@ class CommentSubcommentController extends Controller
         $subcomment->user_id=$id = Auth::id();
         $subcomment->save();
 
-        return redirect(route('comments.subcomments.index', $comment));
+        return redirect(route('quizzes.comments.subcomments.index', ['quiz'=>$quiz,'comment'=>$comment]));
     }
 
     /**
@@ -111,9 +110,11 @@ class CommentSubcommentController extends Controller
      * @param  \App\Models\Subcomment  $subcomment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment, Subcomment $subcomment)
+    public function destroy(Quiz $quiz,Comment $comment, Subcomment $subcomment)
     {
         $subcomment->delete();
-        return redirect(route('comments.subcomments.index',$comment));
+        return redirect(route('quizzes.comments.subcomments.index', ['quiz'=>$quiz,'comment'=>$comment]));
     }
 }
+
+

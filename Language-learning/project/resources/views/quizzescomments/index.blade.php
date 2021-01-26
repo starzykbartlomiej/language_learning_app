@@ -44,7 +44,7 @@
                                                 <div class="text-sm text-gray-500">{{$comment->text}}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-wrap">
-                                                <form method="get" action="{{ route('comments.subcomments.index', $comment) }}">
+                                                <form method="get" action="{{ route('quizzes.comments.subcomments.index', ['quiz'=>$quiz, 'comment'=>$comment]) }}">
                                                     <x-button class="ml-4">
                                                         {{ __('Go to discussion') }}
                                                     </x-button>

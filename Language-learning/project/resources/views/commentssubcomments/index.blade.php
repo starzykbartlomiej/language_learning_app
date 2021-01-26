@@ -62,14 +62,14 @@
                                             </td>
                                                 @if($subcomment->user_id==\Illuminate\Support\Facades\Auth::id())
                                                     <td class="px-6 py-4 whitespace-wrap">
-                                                        <form method="get" action="{{ route('comments.subcomments.edit',  ['comment'=>$comment, 'subcomment'=>$subcomment]) }}">
+                                                        <form method="get" action="{{ route('quizzes.comments.subcomments.edit',  ['quiz'=>$quiz,'comment'=>$comment,'subcomment'=>$subcomment]) }}">
                                                             <x-button class="ml-4">
                                                                 {{ __('Edit') }}
                                                             </x-button>
                                                         </form>
                                                     </td>
                                                     <td class="px-6 py-4 whitespace-wrap">
-                                                        <form method="post" action="{{ route('comments.subcomments.destroy',  ['comment'=>$comment, 'subcomment'=>$subcomment]) }}">
+                                                        <form method="post" action="{{ route('quizzes.comments.subcomments.destroy',  ['quiz'=>$quiz,'comment'=>$comment,'subcomment'=>$subcomment]) }}">
                                                             @csrf
                                                             @method("DELETE")
                                                             <x-button class="ml-4">
@@ -92,7 +92,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="items-center mt-4 px-4 pb-5">
             <div class="flex items-center justify-center max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <form method="get" action="{{ route('comments.subcomments.create',$comment) }}">
+                <form method="get" action="{{ route('quizzes.comments.subcomments.create',['quiz'=>$quiz,'comment'=>$comment]) }}">
 
                     <x-button class="ml-4">
 
@@ -105,7 +105,7 @@
         </div>
         <div class="items-center mt-4 px-4 pb-5">
             <div class="flex items-center justify-center max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <form method="get" action="{{ route('quizzes.index') }}">
+                <form method="get" action="{{ route('quizzes.comments.index',$quiz )}}">
                     <x-button class="ml-4">
                         {{ __('Go back') }}
                     </x-button>

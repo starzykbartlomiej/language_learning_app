@@ -9,7 +9,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
-                    <form method="post" action="{{ route('comments.subcomments.store',['comment'=>$comment])}}">
+                    <form method="post" action="{{ route('quizzes.comments.subcomments.store',['quiz'=>$quiz, 'comment'=>$comment])}}">
                         @csrf
                         <div>
                             <x-label for="title" :value="__('Title')" />

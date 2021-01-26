@@ -1,6 +1,4 @@
 <?php
-//
-//
 $I = new AcceptanceTester($scenario);
 $I->wantTo('Create quizzes with specific languages');
 $I->amOnPage('/dashboard');
@@ -9,17 +7,11 @@ $I->fillField('email', 'john.doe@gmail.com');
 $I->fillField('password', 'secret');
 $I->click('Sign in');
 $I->seeCurrentUrlEquals('/dashboard');
-$I->see('Edit your quizzes');
+$I->dontSee('Edit your quizzes');
 $I->see('Creator Name');
 $I->see('Language');
 $I->dontSeeInDatabase('languages', [
     'language' => 'english',
-]);
-$I->seeInDatabase('languages', [
-    'language' => 'german',
-]);
-$I->seeInDatabase('languages', [
-    'language' => 'spanish',
 ]);
 $I->click("Create new...");
 $I->seeCurrentUrlEquals('/quizzes/create');

@@ -14,7 +14,7 @@ $I->click('Sign in');
 
 $I->seeCurrentUrlEquals('/dashboard');
 
-$I->see('Edit your quizzes');
+$I->dontSee('Edit your quizzes');
 $I->see('Creator Name');
 $I->see('Language');
 //$I->see("You're logged in!");
