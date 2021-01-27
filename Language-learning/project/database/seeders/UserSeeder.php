@@ -22,11 +22,6 @@ class UserSeeder extends Seeder
             'is_admin' => true,
             'expert' => 'Spanish'
         ]);
-        DB::table('users')->insert([
-            'name' => 'Alfons',
-            'email' => 'alfons@gmail.com',
-            'password' => bcrypt('pimp'),
-        ]);
 
         User::factory()->count(4)->create();
 
