@@ -106,10 +106,10 @@ $I->see('Language');
 $I->see('Solve');
 $I->click('Solve');
 $I->seeCurrentUrlEquals('/quizzes/1/solutions/create');
-$I->see('Translate word to Spanish');
-$I->see('Translate sentence to Spanish');
-$I->fillField('Translate sentence to Spanish','hello Jacob');
-$I->fillField('Translate word to Spanish','h');
+$I->see('Translate word to English');
+$I->see('Translate sentence to English');
+$I->fillField('Translate sentence to English','hello Jacob');
+$I->fillField('Translate word to English','h');
 $I->click('Sumbit answers to the quiz');
 //$I->seeInDatabase('solutions',[
 //    'answer'=>'Hola Jacob'

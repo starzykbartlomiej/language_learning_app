@@ -24,13 +24,13 @@
                             @switch($question->type)
                                 @case(1)
                                     <div class="mt-4">
-                                        <x-label for="{{$question->id}}" :value="'Translate word to ' . ucfirst($quiz->get_language($quiz->language_id))" />
+                                        <x-label for="{{$question->id}}" :value="'Translate word to English'" />
                                         <x-input id="{{$question->id}}" class="block mt-1 w-full" type="text" name="{{$question->id}}" :value="old($question->id)" />
                                     </div>
                                 @break;
                                 @case(2)
                                     <div class="mt-4">
-                                        <x-label for="{{$question->id}}" :value="'Translate sentence to ' . ucfirst($quiz->get_language($quiz->language_id))" />
+                                        <x-label for="{{$question->id}}" :value="'Translate sentence to English'" />
                                         <x-input id="{{$question->id}}" class="block mt-1 w-full" type="text" name="{{$question->id}}" :value="old($question->id)" />
                                     </div>
                                 @break;
